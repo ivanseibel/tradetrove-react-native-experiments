@@ -1,9 +1,11 @@
-import { Text, View } from 'react-native'
+import { Box, Text } from '@gluestack-ui/themed'
 
 export const SignIn = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={{ color: 'black' }}>Sign In</Text>
-    </View>
+    <Box flex={1} justifyContent="center" alignItems="center" bg="$blue-light">
+      <Text color="$blue" fontWeight="$bold">
+        This is the Box
+      </Text>
+    </Box>
   )
 }
