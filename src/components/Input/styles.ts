@@ -62,6 +62,13 @@ export const EyeOpenIcon = styled(Eye).attrs({
   color: theme.colors.gray3,
 })``
 
+export const PasswordVisibilityButton = styled.Pressable`
+  width: 20px;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+`
+
 export const EyeClosedIcon = styled(EyeClosed).attrs({
   size: 20,
   color: theme.colors.gray3,

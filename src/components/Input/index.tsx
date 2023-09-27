@@ -2,7 +2,6 @@ import {
   NativeSyntheticEvent,
   TextInputChangeEventData,
   TextInputProps,
-  TouchableOpacity,
 } from 'react-native'
 import * as SC from './styles'
 import { useState } from 'react'
@@ -54,12 +53,9 @@ export const TextInput = ({
         />
 
         {type === 'password' && (
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={handleTogglePasswordVisibility}
-          >
+          <SC.PasswordVisibilityButton onPress={handleTogglePasswordVisibility}>
             {isPasswordVisible ? <SC.EyeOpenIcon /> : <SC.EyeClosedIcon />}
-          </TouchableOpacity>
+          </SC.PasswordVisibilityButton>
         )}
       </SC.TextInputContainer>
     </SC.InputController>
