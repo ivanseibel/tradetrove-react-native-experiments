@@ -2,8 +2,8 @@ import { Text, View } from 'react-native'
 
 export const SignUp = () => {
   return (
-    <View>
-      <Text>Sign Up</Text>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text style={{ color: 'black' }}>Sign Up</Text>
     </View>
   )
 }
