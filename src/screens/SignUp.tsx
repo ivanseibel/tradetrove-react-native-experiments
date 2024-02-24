@@ -1,11 +1,9 @@
-import { Box, Text } from '@gluestack-ui/themed'
+import { View, Text } from 'react-native'
 
 export const SignUp = () => {
   return (
-    <Box flex={1} justifyContent="center" alignItems="center">
-      <Text color="$gray1" fontFamily="$heading" fontSize={'$2xl'}>
-        Sign Up
-      </Text>
-    </Box>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Sign Up</Text>
+    </View>
   )
 }
