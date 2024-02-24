@@ -1,13 +1,13 @@
-import { GluestackUIProvider, useTheme } from '@gluestack-ui/themed'
 import { Routes } from '@routes/index'
-import { config } from '@theme/gluestack-ui.config'
-import { StatusBar, ActivityIndicator } from 'react-native'
+import { StatusBar } from 'react-native'
 import {
   useFonts,
   Karla_400Regular,
   Karla_700Bold,
 } from '@expo-google-fonts/karla'
 import { Loading } from '@components/Loading'
+import { ThemeProvider } from 'styled-components'
+import defaultTheme from '@theme/index'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -19,16 +19,14 @@ export default function App() {
     return <Loading size={'large'} />
   }
 
-  const bgColor = config.tokens.colors.gray6
-
   return (
-    <GluestackUIProvider config={config}>
+    <ThemeProvider theme={defaultTheme}>
       <StatusBar
         barStyle={'dark-content'}
-        backgroundColor={bgColor}
+        backgroundColor={'transparent'}
         translucent
       />
       <Routes />
-    </GluestackUIProvider>
+    </ThemeProvider>
   )
 }
