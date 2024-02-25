@@ -8,8 +8,6 @@ export const SignIn = () => {
       <View
         style={{
           width: 300,
-          // borderWidth: 1,
-          // borderColor: 'gray',
           justifyContent: 'center',
           alignItems: 'center',
           padding: 10,
