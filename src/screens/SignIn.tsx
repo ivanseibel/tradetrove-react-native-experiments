@@ -16,7 +16,7 @@ export const SignIn = () => {
           gap: 10,
         }}
       >
-        <TextInput placeholder="Email" errorMessage="" />
+        <TextInput placeholder="Password" errorMessage="" type="password" />
         <Button
           label="Sign In"
           type="gray"
