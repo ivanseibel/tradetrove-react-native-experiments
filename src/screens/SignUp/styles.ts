@@ -3,8 +3,6 @@ import styled from 'styled-components/native'
 
 export const MainContainer = styled(SafeAreaView)`
   flex: 1;
-  justify-content: space-evenly;
-  align-items: center;
   background-color: ${({ theme }) => theme.colors.gray6};
   padding: 0 46px;
 `
