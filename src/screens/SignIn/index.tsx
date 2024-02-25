@@ -6,8 +6,18 @@ import { Tag } from 'phosphor-react-native'
 import Logo from '@assets/logo.png'
 
 import * as SC from './styles'
+import { useNavigation } from '@react-navigation/native'
+import { AuthNavigatorRoutesProps } from '@routes/auth.route'
+import { ContentText } from '@components/ContentText'
+import { VerticalSpace } from '@components/VerticalSpace'
 
 export const SignIn = () => {
+  const navigation = useNavigation<AuthNavigatorRoutesProps>()
+
+  const handleNavigateToSignUp = () => {
+    navigation.navigate('signUp')
+  }
+
   return (
     <>
       <SC.TopContainer>
@@ -19,9 +29,9 @@ export const SignIn = () => {
           }}
         >
           <SC.Logo source={Logo} />
-          <SC.VerticalSpace height={20} />
+          <VerticalSpace height={20} />
           <SC.Title>tradetrove</SC.Title>
-          <SC.Text type="gray">Your buying and selling space</SC.Text>
+          <ContentText type="gray">Your buying and selling space</ContentText>
         </View>
         <View
           style={{
@@ -32,20 +42,20 @@ export const SignIn = () => {
             gap: 14,
           }}
         >
-          <SC.Text type="black">Access your account</SC.Text>
+          <ContentText type="black">Access your account</ContentText>
           <TextInput
             placeholder="E-mail"
             errorMessage=""
             keyboardType="email-address"
           />
           <TextInput placeholder="Password" errorMessage="" type="password" />
-          <SC.VerticalSpace height={4} />
-          <Button label="Sign In" type="blue" onClick={() => {}} />
+          <VerticalSpace height={4} />
+          <Button label="Sign in" type="blue" onClick={() => {}} />
         </View>
       </SC.TopContainer>
       <SC.BottomContainer>
-        <SC.Text type="black">Don't have an account? </SC.Text>
-        <Button label="Sign Up" type="gray" onClick={() => {}} />
+        <ContentText type="black">Don't have an account? </ContentText>
+        <Button label="Sign up" type="gray" onClick={handleNavigateToSignUp} />
       </SC.BottomContainer>
     </>
   )

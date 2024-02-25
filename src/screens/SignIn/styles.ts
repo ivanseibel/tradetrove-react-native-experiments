@@ -1,14 +1,6 @@
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-type TextProps = {
-  type: 'black' | 'gray'
-}
-
-type VerticalSpaceProps = {
-  height: number
-}
-
 export const TopContainer = styled(SafeAreaView).attrs({
   edges: ['top'],
 })`
@@ -36,19 +28,6 @@ export const Title = styled.Text`
   font-size: ${({ theme }) => theme.fontSize['4xl']}px;
   line-height: ${({ theme }) => theme.lineHeight['4xl']}px;
   font-family: ${({ theme }) => theme.fontFamily.bold};
-`
-
-export const Text = styled.Text<TextProps>`
-  color: ${({ theme, type }) =>
-    type === 'black' ? theme.colors.gray2 : theme.colors.gray4};
-  font-size: ${({ theme }) => theme.fontSize.sm}px;
-  line-height: ${({ theme }) => theme.lineHeight.md}px;
-  font-family: ${({ theme }) => theme.fontFamily.regular};
-`
-
-export const VerticalSpace = styled.View<VerticalSpaceProps>`
-  height: ${({ height }) => height}px;
-  width: '100%';
 `
 
 export const Logo = styled.Image``
