@@ -24,8 +24,6 @@ export const TextInput = ({
     if (onChange) {
       onChange(e)
     }
-
-    console.log('e.nativeEvent.text', e.nativeEvent.text)
     setIsFilled(!!e.nativeEvent.text)
   }
 
