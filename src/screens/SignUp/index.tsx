@@ -43,7 +43,7 @@ export const SignUp = () => {
           >
             <SC.Logo source={Logo} />
             <SC.Title>Welcome!</SC.Title>
-            <ContentText type="black" centered>
+            <ContentText type="dark" centered>
               Create your account and use the space to buy various items and
               sell your products
             </ContentText>
@@ -101,7 +101,7 @@ export const SignUp = () => {
             />
 
             <VerticalSpace height={4} />
-            <Button label="Create account" type="black" onClick={() => {}} />
+            <Button label="Create account" type="black" onPress={() => {}} />
           </View>
 
           {/* Footer */}
@@ -113,8 +113,8 @@ export const SignUp = () => {
               gap: 10,
             }}
           >
-            <ContentText type="black">Already have an account? </ContentText>
-            <Button label="Sign in" type="gray" onClick={handleNavigateBack} />
+            <ContentText type="dark">Already have an account? </ContentText>
+            <Button label="Sign in" type="gray" onPress={handleNavigateBack} />
           </View>
         </View>
       </ScrollView>

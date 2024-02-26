@@ -31,7 +31,7 @@ export const SignIn = () => {
           <SC.Logo source={Logo} />
           <VerticalSpace height={20} />
           <SC.Title>tradetrove</SC.Title>
-          <ContentText type="gray">Your buying and selling space</ContentText>
+          <ContentText type="light">Your buying and selling space</ContentText>
         </View>
         <View
           style={{
@@ -42,7 +42,7 @@ export const SignIn = () => {
             gap: 14,
           }}
         >
-          <ContentText type="black">Access your account</ContentText>
+          <ContentText type="dark">Access your account</ContentText>
           <TextInput
             placeholder="E-mail"
             errorMessage=""
@@ -50,12 +50,12 @@ export const SignIn = () => {
           />
           <TextInput placeholder="Password" errorMessage="" type="password" />
           <VerticalSpace height={4} />
-          <Button label="Sign in" type="blue" onClick={() => {}} />
+          <Button label="Sign in" type="blue" onPress={() => {}} />
         </View>
       </SC.TopContainer>
       <SC.BottomContainer>
-        <ContentText type="black">Don't have an account? </ContentText>
-        <Button label="Sign up" type="gray" onClick={handleNavigateToSignUp} />
+        <ContentText type="dark">Don't have an account? </ContentText>
+        <Button label="Sign up" type="gray" onPress={handleNavigateToSignUp} />
       </SC.BottomContainer>
     </>
   )
