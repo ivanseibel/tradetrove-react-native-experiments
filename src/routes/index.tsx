@@ -1,12 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { AuthRoutes } from './auth.route'
-import { Box } from '@gluestack-ui/themed'
-import { View } from 'react-native'
+import { AppRoutes } from './app.route'
 
 export const Routes = () => {
+  const isAuthenticated = true
+
   return (
     <NavigationContainer>
-      <AuthRoutes />
+      {isAuthenticated ? <AppRoutes /> : <AuthRoutes />}
     </NavigationContainer>
   )
 }
