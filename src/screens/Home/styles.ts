@@ -13,4 +13,5 @@ export const Content = styled.View`
   width: 100%;
   justify-content: flex-start;
   align-items: center;
+  gap: 32px;
 `
