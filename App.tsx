@@ -8,6 +8,7 @@ import {
 import { Loading } from '@components/Loading'
 import { ThemeProvider } from 'styled-components'
 import defaultTheme from '@theme/index'
+import { useTheme } from 'styled-components/native'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
