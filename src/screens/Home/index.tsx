@@ -1,6 +1,7 @@
 import * as SC from './styles'
 import { HomeHeader } from '@components/HomeHeader'
 import { MyProductsSummary } from '@components/MyProductsSummary'
+import { ProductList } from '@components/ProductList'
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <SC.Content>
         <HomeHeader />
         <MyProductsSummary />
+        <ProductList />
       </SC.Content>
     </SC.Main>
   )

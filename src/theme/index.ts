@@ -20,6 +20,7 @@ export default {
     bold: 'Karla_700Bold',
   },
   fontSize: {
+    '2xs': 10,
     xs: 12,
     sm: 14,
     md: 16,
@@ -29,6 +30,7 @@ export default {
     '4xl': 40,
   },
   lineHeight: {
+    '2xs': 13,
     xs: 15.6,
     sm: 18.2,
     md: 20.8,
