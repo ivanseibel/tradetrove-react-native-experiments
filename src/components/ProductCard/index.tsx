@@ -1,5 +1,5 @@
-import { Text, View } from 'react-native'
 import * as SC from './styles'
+import DefaultPhoto from '@assets/default-photo.png'
 
 type ComponentProps = {
   id: string
@@ -23,7 +23,9 @@ export const ProductCard = ({
       {/* <SC.ProductContainer> */}
       <SC.ProductImageContainer>
         <SC.ProductImage source={{ uri: image }} />
-        <SC.SellerAvatar source={{ uri: seller_avatar }} />
+        <SC.SellerAvatar
+          source={seller_avatar ? { uri: seller_avatar } : DefaultPhoto}
+        />
 
         <SC.BadgeWrapper condition={condition}>
           <SC.ConditionBadge>{condition}</SC.ConditionBadge>
