@@ -1,4 +1,4 @@
-import { Image } from 'react-native'
+import { Image, Text } from 'react-native'
 import styled, { css } from 'styled-components/native'
 
 type ConditionBadgeProps = {
@@ -8,11 +8,13 @@ type ConditionBadgeProps = {
 export const Main = styled.View`
   align-items: flex-start;
   gap: 4px;
-  align-self: stretch;
+  /* align-self: stretch; */
+  width: 170px;
 `
 
 export const ProductImageContainer = styled.View`
   height: 100px;
+  width: 100%;
 
   border-radius: 6px;
   background: ${({ theme }) => theme.colors.gray7};
@@ -24,7 +26,8 @@ export const ProductImageContainer = styled.View`
 export const ProductImage = styled(Image).attrs({
   resizeMode: 'cover',
 })`
-  width: 170px;
+  /* width: 170px; */
+  width: 100%;
   align-self: stretch;
   height: 110px;
   flex-shrink: 0;
@@ -84,15 +87,14 @@ export const ProductInfo = styled.View`
   align-self: stretch;
 `
 
-export const ProductName = styled.Text`
+export const ProductName = styled(Text).attrs({
+  numberOfLines: 1,
+})`
   height: 18px;
   align-items: center;
   align-self: stretch;
 
-  overflow: hidden;
   color: ${({ theme }) => theme.colors.gray2};
-  text-overflow: ellipsis;
-  white-space: nowrap;
   font-family: ${({ theme }) => theme.fontFamily.regular};
   font-size: ${({ theme }) => theme.fontSize.sm}px;
   line-height: ${({ theme }) => theme.lineHeight.sm}px;
