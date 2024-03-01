@@ -35,6 +35,13 @@ export const VerticalDivider = styled.View`
   background: ${({ theme }) => theme.colors.gray5};
 `
 
+export const FilterButton = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.8,
+})`
+  width: 20px;
+  height: 20px;
+`
+
 export const FilterIcon = styled(Sliders).attrs(({ theme }) => ({
   size: 20,
   color: theme.colors.gray1,
