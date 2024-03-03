@@ -1,12 +1,27 @@
 import { Modal, ModalProps } from 'react-native'
 import * as SC from './styles'
 import { useState } from 'react'
-import { ConditionBadgeTitle } from './styles'
+import { CheckBox } from '@components/CheckBox'
 
 type FilterOptionsModalProps = {
   visible: boolean
   onRequestClose: () => void
 }
+
+type PaymentMethodOption = {
+  id: string
+  title: string
+  selected: boolean
+}
+
+const paymentMethodOptions: PaymentMethodOption[] = [
+  { id: '1', title: 'Cash', selected: false },
+  { id: '2', title: 'Credit Card', selected: false },
+  { id: '3', title: 'Debit Card', selected: false },
+  { id: '4', title: 'Bank Transfer', selected: false },
+  { id: '5', title: 'Paypal', selected: false },
+  { id: '6', title: 'Bitcoin', selected: false },
+]
 
 export const FilterOptionsModal = ({
   visible,
@@ -14,6 +29,23 @@ export const FilterOptionsModal = ({
 }: FilterOptionsModalProps) => {
   const [usedIsSelected, setUsedIsSelected] = useState(false)
   const [newIsSelected, setNewIsSelected] = useState(false)
+  const [openToTrade, setOpenToTrade] = useState(false)
+  const [paymentMethods, setPaymentMethods] = useState(paymentMethodOptions)
+
+  const handlePaymentMethodSelection = (id: string, selected: boolean) => {
+    const updatedPaymentMethods = paymentMethods.map((method) => {
+      if (method.id === id) {
+        return {
+          ...method,
+          selected: selected,
+        }
+      }
+
+      return method
+    })
+
+    setPaymentMethods(updatedPaymentMethods)
+  }
 
   return (
     <Modal
@@ -27,14 +59,14 @@ export const FilterOptionsModal = ({
           <SC.Divider />
 
           <SC.HeaderContainer>
-            <SC.Title>Filter Options</SC.Title>
+            <SC.FilterOptionsTitle>Filter Options</SC.FilterOptionsTitle>
             <SC.CloseButton onPress={onRequestClose}>
               <SC.CloseIcon />
             </SC.CloseButton>
           </SC.HeaderContainer>
 
-          <SC.ConditionContainer>
-            <SC.Title>Condition</SC.Title>
+          <SC.OptionContainer>
+            <SC.OptionTitle>Condition</SC.OptionTitle>
 
             <SC.ConditionBadgeContainer>
               <SC.ConditionBadge
@@ -44,7 +76,7 @@ export const FilterOptionsModal = ({
                 <SC.ConditionBadgeTitle active={newIsSelected}>
                   New
                 </SC.ConditionBadgeTitle>
-                {newIsSelected && <SC.BadgeIcon />}
+                {newIsSelected && <SC.ConditionBadgeIcon />}
               </SC.ConditionBadge>
               <SC.ConditionBadge
                 active={usedIsSelected}
@@ -53,10 +85,33 @@ export const FilterOptionsModal = ({
                 <SC.ConditionBadgeTitle active={usedIsSelected}>
                   Used
                 </SC.ConditionBadgeTitle>
-                {usedIsSelected && <SC.BadgeIcon />}
+                {usedIsSelected && <SC.ConditionBadgeIcon />}
               </SC.ConditionBadge>
             </SC.ConditionBadgeContainer>
-          </SC.ConditionContainer>
+          </SC.OptionContainer>
+
+          <SC.OptionContainer>
+            <SC.OptionTitle>Open to Trade?</SC.OptionTitle>
+            <SC.OpenToTradeSwitch
+              value={openToTrade}
+              onValueChange={() => setOpenToTrade(!openToTrade)}
+            />
+          </SC.OptionContainer>
+
+          <SC.OptionContainer>
+            <SC.OptionTitle>Payment Method</SC.OptionTitle>
+            <SC.PaymentMethodContainer>
+              {paymentMethods.map((option) => (
+                <CheckBox
+                  key={option.id}
+                  value={option.selected}
+                  onValueChange={(value) =>
+                    handlePaymentMethodSelection(option.id, value)
+                  }
+                />
+              ))}
+            </SC.PaymentMethodContainer>
+          </SC.OptionContainer>
         </SC.ContentContainer>
       </SC.MainContainer>
     </Modal>
