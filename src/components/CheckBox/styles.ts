@@ -18,7 +18,7 @@ export const CheckBox = styled.View<CheckBoxProps>`
   width: 20px;
   height: 20px;
   border-width: ${({ theme, value }) => (value ? 0 : 1)}px;
-  border-radius: 4px;
+  border-radius: 3px;
   border-color: ${({ theme }) => theme.colors.gray2};
   background-color: ${({ theme, value }) =>
     value ? theme.colors.bluelight : 'transparent'};
