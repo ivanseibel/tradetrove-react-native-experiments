@@ -1,5 +1,5 @@
 import { X, XCircle } from 'phosphor-react-native'
-import { TouchableOpacity } from 'react-native'
+import { Switch, TouchableOpacity } from 'react-native'
 import styled, { css } from 'styled-components/native'
 
 type ConditionBadgeProps = {
@@ -54,24 +54,25 @@ export const CloseIcon = styled(X).attrs(({ theme }) => ({
 }))`
 `
 
-export const Title = styled.Text`
+export const FilterOptionsTitle = styled.Text`
   color: ${({ theme }) => theme.colors.gray1};
   font-family: ${({ theme }) => theme.fontFamily.bold};
-  font-size: ${({ theme }) => theme.fontSize.xl}px;
+  font-size: 20px;
+  /* font-size: ${({ theme }) => theme.fontSize.xl}px; */
   line-height: ${({ theme }) => theme.lineHeight.xl}px;
 `
 
-export const ConditionContainer = styled.View`
-  align-items: flex-start;
-  gap: 12px;
-  align-self: stretch;
-`
-
-export const ConditionTitle = styled.Text`
+export const OptionTitle = styled.Text`
   color: ${({ theme }) => theme.colors.gray2};
   font-family: ${({ theme }) => theme.fontFamily.bold};
   font-size: ${({ theme }) => theme.fontSize.sm}px;
   line-height: ${({ theme }) => theme.lineHeight.sm}px;
+`
+
+export const OptionContainer = styled.View`
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
 `
 
 export const ConditionBadgeContainer = styled.View`
@@ -115,9 +116,38 @@ export const ConditionBadgeTitle = styled.Text<ConditionBadgeProps>`
   text-transform: uppercase;
 `
 
-export const BadgeIcon = styled(XCircle).attrs(({ theme }) => ({
+export const ConditionBadgeIcon = styled(XCircle).attrs(({ theme }) => ({
   size: 16,
   color: theme.colors.gray6,
   weight: 'fill',
 }))`
 `
+
+export const OpenToTradeSwitch = styled(Switch).attrs(({ theme }) => ({
+  trackColor: {
+    false: theme.colors.gray5,
+    true: theme.colors.bluelight,
+  },
+  thumbColor: theme.colors.white,
+}))`
+  height: 28px;
+`
+
+export const PaymentMethodContainer = styled.View`
+  align-self: stretch;
+  gap: 8px;
+  align-items: flex-start;
+`
+
+// export const PaymentMethodCheckboxContainer = styled.View`
+//   flex-direction: row;
+//   align-items: center;
+//   gap: 8px;
+// `
+
+// export const PaymentMethodCheckboxTitle = styled.Text`
+//   color: ${({ theme }) => theme.colors.gray2};
+//   font-family: ${({ theme }) => theme.fontFamily.regular};
+//   font-size: ${({ theme }) => theme.fontSize.md}px;
+//   line-height: ${({ theme }) => theme.lineHeight.md}px;
+// `
