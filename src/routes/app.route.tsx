@@ -25,8 +25,6 @@ export const AppRoutes: React.FC = () => {
   const { colors, fontSize } = useTheme()
   const { bottom } = useSafeAreaInsets()
 
-  console.log('bottom', bottom)
-
   return (
     <Navigator
       safeAreaInsets={{ bottom }}
