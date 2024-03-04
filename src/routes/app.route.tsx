@@ -7,8 +7,7 @@ import { useTheme } from 'styled-components/native'
 import Home from '@screens/Home'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Alert, Platform, TouchableOpacity, View } from 'react-native'
-import { House, HouseSimple, SignOut, Tag } from 'phosphor-react-native'
-import { ContentText } from '@components/ContentText'
+import { House, SignOut, Tag } from 'phosphor-react-native'
 import { MyAds } from '@screens/MyAds'
 
 type AppRoutes = {
