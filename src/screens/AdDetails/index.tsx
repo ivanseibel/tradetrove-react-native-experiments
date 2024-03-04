@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import * as SC from './styles'
+import { ImgCarousel } from '@components/ImgCarousel'
 
 export const AdDetails = () => {
   const navigation = useNavigation()
@@ -15,7 +16,9 @@ export const AdDetails = () => {
           <SC.BackIcon />
         </SC.NavigationButton>
       </SC.NavigationHeader>
-      <SC.Content>{/*  */}</SC.Content>
+      <SC.Content>
+        <ImgCarousel />
+      </SC.Content>
     </SC.Main>
   )
 }
