@@ -139,15 +139,12 @@ export const PaymentMethodContainer = styled.View`
   align-items: flex-start;
 `
 
-// export const PaymentMethodCheckboxContainer = styled.View`
-//   flex-direction: row;
-//   align-items: center;
-//   gap: 8px;
-// `
-
-// export const PaymentMethodCheckboxTitle = styled.Text`
-//   color: ${({ theme }) => theme.colors.gray2};
-//   font-family: ${({ theme }) => theme.fontFamily.regular};
-//   font-size: ${({ theme }) => theme.fontSize.md}px;
-//   line-height: ${({ theme }) => theme.lineHeight.md}px;
-// `
+export const ActionsContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  gap: 12px;
+  margin-top: 24px;
+  margin-bottom: 12px;
+`
