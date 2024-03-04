@@ -5,9 +5,9 @@ import styled from 'styled-components/native'
 
 export const Main = styled(SafeAreaView)`
   flex: 1;
+  width: 100%;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.gray6};
-  padding: 0 24px
 `
 
 export const Content = styled.View`
@@ -22,7 +22,8 @@ export const NavigationHeader = styled.View`
   width: 100%;
   flex-direction: row;
   align-items: center;
-  margin: 20px 0;
+  margin-top: 20px;
+  padding: 0 24px 10px;
 `
 
 export const NavigationButton = styled(TouchableOpacity).attrs({
