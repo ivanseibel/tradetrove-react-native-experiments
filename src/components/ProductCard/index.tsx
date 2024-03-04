@@ -1,5 +1,7 @@
+import { AppNavigatorRoutesProps } from '@routes/app.route'
 import * as SC from './styles'
 import DefaultPhoto from '@assets/default-photo.png'
+import { useNavigation } from '@react-navigation/native'
 
 type ComponentProps = {
   id: string
@@ -18,9 +20,14 @@ export const ProductCard = ({
   price,
   seller_avatar,
 }: ComponentProps) => {
+  const navigation = useNavigation<AppNavigatorRoutesProps>()
+
+  const handleProductPress = () => {
+    navigation.navigate('adDetails')
+  }
+
   return (
-    <SC.Main>
-      {/* <SC.ProductContainer> */}
+    <SC.Main onPress={handleProductPress}>
       <SC.ProductImageContainer>
         <SC.ProductImage source={{ uri: image }} />
         <SC.SellerAvatar

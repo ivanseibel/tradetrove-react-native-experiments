@@ -1,14 +1,15 @@
-import { Image, Text } from 'react-native'
+import { Image, Text, TouchableOpacity } from 'react-native'
 import styled, { css } from 'styled-components/native'
 
 type ConditionBadgeProps = {
   condition: 'new' | 'used'
 }
 
-export const Main = styled.View`
+export const Main = styled(TouchableOpacity).attrs({
+  activeOpacity: 0.8,
+})`
   align-items: flex-start;
   gap: 4px;
-  /* align-self: stretch; */
   width: 170px;
 `
 

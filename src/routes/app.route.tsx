@@ -9,11 +9,13 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { Alert, Platform, TouchableOpacity, View } from 'react-native'
 import { House, SignOut, Tag } from 'phosphor-react-native'
 import { MyAds } from '@screens/MyAds'
+import { AdDetails } from '@screens/AdDetails'
 
 type AppRoutes = {
   home: undefined
   myAds: undefined
   signOut: undefined
+  adDetails: undefined
 }
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>
@@ -118,6 +120,11 @@ export const AppRoutes: React.FC = () => {
             />
           ),
         }}
+      />
+      <Screen
+        name="adDetails"
+        component={AdDetails}
+        options={{ tabBarButton: () => null }}
       />
     </Navigator>
   )
