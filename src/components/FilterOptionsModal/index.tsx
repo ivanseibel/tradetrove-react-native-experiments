@@ -2,6 +2,7 @@ import { Modal, ModalProps } from 'react-native'
 import * as SC from './styles'
 import { useState } from 'react'
 import { CheckBox } from '@components/CheckBox'
+import { Button } from '@components/Button'
 
 type FilterOptionsModalProps = {
   visible: boolean
@@ -104,6 +105,7 @@ export const FilterOptionsModal = ({
               {paymentMethods.map((option) => (
                 <CheckBox
                   key={option.id}
+                  label={option.title}
                   value={option.selected}
                   onValueChange={(value) =>
                     handlePaymentMethodSelection(option.id, value)
@@ -112,6 +114,21 @@ export const FilterOptionsModal = ({
               ))}
             </SC.PaymentMethodContainer>
           </SC.OptionContainer>
+
+          <SC.ActionsContainer>
+            <Button
+              style={{ width: '48%' }}
+              onPress={() => {}}
+              label="Reset"
+              type="gray"
+            />
+            <Button
+              style={{ width: '48%' }}
+              onPress={() => {}}
+              label="Apply"
+              type="black"
+            />
+          </SC.ActionsContainer>
         </SC.ContentContainer>
       </SC.MainContainer>
     </Modal>
