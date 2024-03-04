@@ -1,4 +1,4 @@
-import { Modal, ModalProps } from 'react-native'
+import { Modal } from 'react-native'
 import * as SC from './styles'
 import { useState } from 'react'
 import { CheckBox } from '@components/CheckBox'
@@ -54,6 +54,7 @@ export const FilterOptionsModal = ({
       onRequestClose={onRequestClose}
       transparent
       animationType="slide"
+      statusBarTranslucent
     >
       <SC.MainContainer>
         <SC.ContentContainer>
