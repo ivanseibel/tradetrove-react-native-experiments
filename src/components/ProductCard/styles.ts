@@ -73,7 +73,7 @@ export const BadgeWrapper = styled.View<ConditionBadgeProps>`
   right: 4px;
 `
 
-export const ConditionBadge = styled.Text`
+export const ConditionBadgeText = styled.Text`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.regular};
   font-size: ${({ theme }) => theme.fontSize['2xs']}px;
