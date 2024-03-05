@@ -124,7 +124,7 @@ export const AppRoutes: React.FC = () => {
       <Screen
         name="adDetails"
         component={AdDetails}
-        options={{ tabBarButton: () => null }}
+        options={{ tabBarButton: () => null, tabBarStyle: { display: 'none' } }}
       />
     </Navigator>
   )
