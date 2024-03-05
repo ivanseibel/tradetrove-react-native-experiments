@@ -12,11 +12,7 @@ export const ImgCarousel = () => {
 
   return (
     <SC.Main>
-      <SC.CarouselViewer
-        initialPage={0}
-        onPageSelected={onPageSelected}
-        offscreenPageLimit={0}
-      >
+      <SC.CarouselViewer initialPage={0} onPageSelected={onPageSelected}>
         <SC.Slide>
           <SC.SlideImage
             source={{

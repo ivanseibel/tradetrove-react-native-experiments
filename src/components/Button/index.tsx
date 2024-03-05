@@ -1,4 +1,4 @@
-import { IconProps, Plus, Tag } from 'phosphor-react-native'
+import { IconProps, IconWeight, Plus, Tag } from 'phosphor-react-native'
 import { TouchableOpacityProps } from 'react-native'
 
 import * as SC from './styles'
@@ -10,6 +10,7 @@ type ComponentProps = TouchableOpacityProps & {
   Icon?: React.ComponentType<IconProps>
   iconColor?: 'dark' | 'light'
   iconSize?: number
+  iconWeight?: IconWeight | undefined
 }
 
 export const Button = ({
@@ -18,6 +19,7 @@ export const Button = ({
   Icon,
   iconColor,
   iconSize,
+  iconWeight,
   ...rest
 }: ComponentProps) => {
   const { colors } = useTheme()
@@ -27,8 +29,8 @@ export const Button = ({
       {Icon && (
         <Icon
           size={!iconSize ? 16 : iconSize}
-          color={!(iconColor === 'dark') ? colors.gray3 : colors.gray7}
-          weight="bold"
+          color={iconColor === 'dark' ? colors.gray3 : colors.gray7}
+          weight={iconWeight}
         />
       )}
 
