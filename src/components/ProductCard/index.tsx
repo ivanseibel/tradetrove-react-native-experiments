@@ -35,7 +35,7 @@ export const ProductCard = ({
         />
 
         <SC.BadgeWrapper condition={condition}>
-          <SC.ConditionBadge>{condition}</SC.ConditionBadge>
+          <SC.ConditionBadgeText>{condition}</SC.ConditionBadgeText>
         </SC.BadgeWrapper>
       </SC.ProductImageContainer>
 
