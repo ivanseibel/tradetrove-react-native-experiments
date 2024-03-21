@@ -10,7 +10,7 @@ export const Main = styled(TouchableOpacity).attrs({
 })`
   align-items: flex-start;
   gap: 4px;
-  width: 170px;
+  width: 48%;
 `
 
 export const ProductImageContainer = styled.View`
@@ -27,7 +27,6 @@ export const ProductImageContainer = styled.View`
 export const ProductImage = styled(Image).attrs({
   resizeMode: 'cover',
 })`
-  /* width: 170px; */
   width: 100%;
   align-self: stretch;
   height: 110px;
