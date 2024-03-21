@@ -8,6 +8,8 @@ type ComponentProps = {
   name: string
   price: number
   image: string
+  active?: boolean
+  showSeller?: boolean
   condition: 'new' | 'used'
   seller: {
     id: string
@@ -22,6 +24,8 @@ export const ProductCard = ({
   image,
   name,
   price,
+  showSeller = true,
+  active = true,
   seller,
 }: ComponentProps) => {
   const navigation = useNavigation<AppNavigatorRoutesProps>()
@@ -39,9 +43,12 @@ export const ProductCard = ({
     <SC.Main onPress={handleProductPress}>
       <SC.ProductImageContainer>
         <SC.ProductImage source={{ uri: image }} />
-        <SC.SellerAvatar
-          source={seller.avatar ? { uri: seller.avatar } : DefaultPhoto}
-        />
+
+        {showSeller && (
+          <SC.SellerAvatar
+            source={seller.avatar ? { uri: seller.avatar } : DefaultPhoto}
+          />
+        )}
 
         <SC.BadgeWrapper condition={condition}>
           <SC.ConditionBadgeText>{condition}</SC.ConditionBadgeText>
