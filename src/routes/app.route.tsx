@@ -11,11 +11,16 @@ import { House, SignOut, Tag } from 'phosphor-react-native'
 import { MyAds } from '@screens/MyAds'
 import { AdDetails } from '@screens/AdDetails'
 
+export type AdDetailsParams = {
+  id: string
+  allowEdit?: boolean
+}
+
 type AppRoutes = {
   home: undefined
   myAds: undefined
   signOut: undefined
-  adDetails: undefined
+  adDetails: AdDetailsParams
 }
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>
