@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute, useTheme } from '@react-navigation/native'
 import * as SC from './styles'
 import { ImgCarousel } from '@components/ImgCarousel'
 import {
@@ -9,9 +9,12 @@ import {
   CurrencyBtc,
   Icon,
   WhatsappLogo,
+  Power,
+  Trash,
 } from 'phosphor-react-native'
 import { FlatList } from 'react-native'
 import { Button } from '@components/Button'
+import { AdDetailsParams } from '@routes/app.route'
 
 type PaymentItem = {
   Icon: Icon
@@ -27,8 +30,47 @@ const paymentMethods: PaymentItem[] = [
   { Icon: CurrencyBtc, title: 'Bitcoin' },
 ]
 
+const renderAdFooter = () => {
+  return (
+    <SC.Footer>
+      <SC.FooterPrice>
+        <SC.Currency size="lg">EUR</SC.Currency>
+        <SC.Price size="lg">1,000.00</SC.Price>
+      </SC.FooterPrice>
+
+      <Button
+        label="Contact seller"
+        type="blue"
+        Icon={WhatsappLogo}
+        iconColor="light"
+        iconWeight="fill"
+        style={{ width: '50%' }}
+      />
+    </SC.Footer>
+  )
+}
+
+const renderMyAdFooter = ({ active }: { active: boolean }) => {
+  const { colors } = useTheme()
+
+  return (
+    <SC.MyAdFooter>
+      <Button
+        label={active ? 'Deactivate Ad' : 'Activate Ad'}
+        type={active ? 'black' : 'blue'}
+        Icon={Power}
+      />
+      <Button label={'Delete Ad'} type={'gray'} Icon={Trash} iconColor="dark" />
+    </SC.MyAdFooter>
+  )
+}
+
 export const AdDetails = () => {
   const navigation = useNavigation()
+  const route = useRoute()
+
+  const { id, allowEdit } = route.params as AdDetailsParams
+  const active = true
 
   const handleBackPress = () => {
     navigation.goBack()
@@ -40,6 +82,12 @@ export const AdDetails = () => {
         <SC.NavigationButton onPress={handleBackPress}>
           <SC.BackIcon />
         </SC.NavigationButton>
+
+        {allowEdit && (
+          <SC.EditButton>
+            <SC.EditIcon />
+          </SC.EditButton>
+        )}
       </SC.NavigationHeader>
       <ImgCarousel />
       <SC.Content>
@@ -66,9 +114,7 @@ export const AdDetails = () => {
           <SC.ProductDescription>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
             vestibulum, nunc eget accumsan. Nam vestibulum, nunc eget accumsan.
-            Nam vestibulum, nunc eget accumsan. Nam vestibulum, nunc eget
-            accumsan. Nam vestibulum, nunc eget accumsan. Nam vestibulum, nunc
-            eget accumsan. Nam vestibulum, nunc eget accumsan.
+            Nam vestibulum, nunc eget accumsan.
           </SC.ProductDescription>
         </SC.ProductDetails>
         <SC.PaymentDetails>
@@ -98,21 +144,9 @@ export const AdDetails = () => {
           </SC.PaymentMethods>
         </SC.PaymentDetails>
       </SC.Content>
-      <SC.Footer>
-        <SC.FooterPrice>
-          <SC.Currency size="lg">EUR</SC.Currency>
-          <SC.Price size="lg">1,000.00</SC.Price>
-        </SC.FooterPrice>
 
-        <Button
-          label="Contact seller"
-          type="blue"
-          Icon={WhatsappLogo}
-          iconColor="light"
-          iconWeight="fill"
-          style={{ width: '50%' }}
-        />
-      </SC.Footer>
+      {!allowEdit && renderAdFooter()}
+      {allowEdit && renderMyAdFooter({ active })}
     </SC.Main>
   )
 }
