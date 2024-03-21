@@ -1,4 +1,4 @@
-import { ArrowLeft } from 'phosphor-react-native'
+import { ArrowLeft, Pencil } from 'phosphor-react-native'
 import { TouchableOpacity, Text, Platform } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -20,6 +20,7 @@ export const NavigationHeader = styled.View`
   width: 100%;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   margin-top: 20px;
   padding: 0 24px 10px;
 `
@@ -37,13 +38,31 @@ export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => ({
   color: theme.colors.gray2,
 }))``
 
-export const Content = styled.View`
-  flex: 1;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-  padding: 16px 24px;
+export const EditButton = styled(TouchableOpacity).attrs({
+  activeOpacity: 0.7,
+})`
+    width: 30px;
+    height: 30px;
+    align-items: center;
+`
+
+export const EditIcon = styled(Pencil).attrs(({ theme }) => ({
+  size: 24,
+  color: theme.colors.gray2,
+}))``
+
+export const Content = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    flexGrow: 1,
+    paddingBottom: 90,
+    paddingTop: 20,
+    paddingHorizontal: 24,
+    alignItems: 'center',
+    gap: 24,
+  },
+  showsVerticalScrollIndicator: false,
+})`
+
 `
 
 export const SellerInfo = styled.View`
@@ -228,4 +247,12 @@ export const FooterPrice = styled.View`
   flex-direction: row;
   align-items: flex-end;
   gap: 4px;
+`
+
+export const MyAdFooter = styled(SafeAreaView).attrs({
+  edges: ['bottom'],
+})`
+  gap: 8px;
+  align-self: stretch;
+  padding: 10px 24px 16px;
 `
