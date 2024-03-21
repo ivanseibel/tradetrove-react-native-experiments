@@ -9,7 +9,7 @@ export default function Home() {
       <SC.Content>
         <HomeHeader />
         <MyProductsSummary />
-        <ProductList />
+        <ProductList headerType="home" />
       </SC.Content>
     </SC.Main>
   )
