@@ -8,7 +8,9 @@ import {
 import { Loading } from '@components/Loading'
 import { ThemeProvider } from 'styled-components'
 import defaultTheme from '@theme/index'
-import { useTheme } from 'styled-components/native'
+import * as eva from '@eva-design/eva'
+import { ApplicationProvider } from '@ui-kitten/components'
+import { default as customMapping } from '@theme/ui-kitten/mapping.json'
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -22,12 +24,18 @@ export default function App() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <StatusBar
-        barStyle={'dark-content'}
-        backgroundColor={'transparent'}
-        translucent
-      />
-      <Routes />
+      <ApplicationProvider
+        {...eva}
+        theme={eva.light}
+        customMapping={customMapping}
+      >
+        <StatusBar
+          barStyle={'dark-content'}
+          backgroundColor={'transparent'}
+          translucent
+        />
+        <Routes />
+      </ApplicationProvider>
     </ThemeProvider>
   )
 }
