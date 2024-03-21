@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { PagerViewOnPageSelectedEvent } from 'react-native-pager-view'
 import * as SC from './styles'
-import { NativeSyntheticEvent } from 'react-native'
 
 export const ImgCarousel = () => {
   const [currentPage, setCurrentPage] = useState(0)
@@ -19,6 +18,9 @@ export const ImgCarousel = () => {
               uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Left_side_of_Flying_Pigeon.jpg/1200px-Left_side_of_Flying_Pigeon.jpg',
             }}
           />
+          <SC.DarkenOverlay>
+            <SC.InactiveText>AD IS INACTIVATED</SC.InactiveText>
+          </SC.DarkenOverlay>
         </SC.Slide>
         <SC.Slide>
           <SC.SlideImage
