@@ -11,6 +11,7 @@ type ProductType = {
   name: string
   price: number
   image: string
+  active?: boolean
   condition: 'new' | 'used'
   seller_avatar: string
 }
@@ -26,6 +27,7 @@ const products: ProductType[] = [
     id: '1',
     name: 'Nike Air Max 2021 jfjfj alalkak badum',
     price: 150,
+    active: true,
     image:
       'https://www.shuropody.com/cdn/shop/collections/Women_s_trainers.jpg?v=1647954823',
     condition: 'used',
@@ -35,6 +37,7 @@ const products: ProductType[] = [
     id: '2',
     name: 'Macbook Pro 2020',
     price: 2500,
+    active: false,
     image:
       'https://www.zdnet.com/a/img/resize/771843da7bfb3d3f37b0dca8da1bf9017b221f9a/2020/12/11/bb70ffc0-7d9a-4ed6-a29d-67e9044f2344/top.jpg?auto=webp&fit=crop&height=1200&width=1200',
     condition: 'new',
@@ -203,6 +206,8 @@ export const ProductList = ({ headerType }: ComponentProps) => {
             image={item.image}
             name={item.name}
             price={item.price}
+            active={item.active}
+            showSeller={headerType !== 'myAds'}
             seller={{
               id: '999',
               name: 'Ivan Seibel',
