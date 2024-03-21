@@ -17,13 +17,14 @@ export const Main = styled.View`
 export const CarouselViewer = styled(PagerView)`
   width: ${width}px;
   height: 280px;
-`
+  `
 
 export const Slide = styled.View`
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 280px;
+  position: relative;
 `
 
 export const SlideImage = styled(Image).attrs({
@@ -47,7 +48,22 @@ export const Bar = styled.View<BarProps>`
   width: 32%;
   height: 3px;
   border-radius: 2px;
-  /* margin: 0 5px; */
   opacity: ${({ selected }) => (selected ? 1 : 0.5)};
   background-color: ${({ theme }) => theme.colors.gray7};
+`
+
+export const DarkenOverlay = styled.View`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;  
+`
+
+export const InactiveText = styled.Text`
+  font-family: ${({ theme }) => theme.fontFamily.bold};
+  font-size: ${({ theme }) => theme.fontSize.sm}px;
+  line-height: ${({ theme }) => theme.lineHeight.sm}px;
+  color: ${({ theme }) => theme.colors.gray7};
 `
