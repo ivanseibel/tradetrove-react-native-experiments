@@ -2,6 +2,9 @@ import { SearchInput } from '@components/SearchInput'
 import * as SC from './styles'
 import { ProductCard } from '@components/ProductCard'
 import { FlatList, Text } from 'react-native'
+import { ContentText } from '@components/ContentText'
+import { IndexPath, Select, SelectItem } from '@ui-kitten/components'
+import { useState } from 'react'
 
 type ProductType = {
   id: string
@@ -11,6 +14,12 @@ type ProductType = {
   condition: 'new' | 'used'
   seller_avatar: string
 }
+
+type ComponentProps = {
+  headerType: 'home' | 'myAds'
+}
+
+const MY_ADS_FILTER_OPTIONS = ['All', 'Active', 'Inactive']
 
 const products: ProductType[] = [
   {
@@ -123,40 +132,85 @@ const products: ProductType[] = [
   },
 ]
 
-export const ProductList = () => {
+const renderHomeHeader = () => {
+  return (
+    <SC.FilterContainer>
+      <SC.Title>Discover & Explore</SC.Title>
+      <SearchInput />
+    </SC.FilterContainer>
+  )
+}
+
+const renderMyAdsHeader = ({
+  selectedIndex,
+  setSelectedIndex,
+}: {
+  selectedIndex: IndexPath
+  setSelectedIndex: (index: IndexPath) => void
+}) => {
+  return (
+    <SC.ProductsHeader>
+      <ContentText type="dark">9 items</ContentText>
+
+      <Select
+        selectedIndex={selectedIndex}
+        onSelect={(index) => setSelectedIndex(index as IndexPath)}
+        style={{ width: 133 }}
+        placeholder="Filter"
+        value={
+          MY_ADS_FILTER_OPTIONS[selectedIndex.row as number] ||
+          MY_ADS_FILTER_OPTIONS[0]
+        }
+      >
+        {MY_ADS_FILTER_OPTIONS.map((option) => (
+          <SelectItem key={option} title={option} />
+        ))}
+      </Select>
+    </SC.ProductsHeader>
+  )
+}
+
+export const ProductList = ({ headerType }: ComponentProps) => {
+  const [selectedIndex, setSelectedIndex] = useState<IndexPath>(
+    new IndexPath(0)
+  )
+
   return (
     <SC.Main>
-      <SC.FilterContainer>
-        <SC.Title>Discover & Explore</SC.Title>
-        <SearchInput />
-        <FlatList
-          data={products}
-          numColumns={2}
-          showsVerticalScrollIndicator={false}
-          style={{
-            width: '100%',
-            marginTop: 12,
-          }}
-          contentContainerStyle={{
-            paddingBottom: 70,
-          }}
-          columnWrapperStyle={{
-            justifyContent: 'space-around',
-            flex: 1,
-            marginBottom: 24,
-          }}
-          renderItem={({ item }) => (
-            <ProductCard
-              condition={item.condition}
-              id={item.id}
-              image={item.image}
-              name={item.name}
-              price={item.price}
-              seller_avatar={item.seller_avatar}
-            />
-          )}
-        />
-      </SC.FilterContainer>
+      {headerType === 'home' && renderHomeHeader()}
+      {headerType === 'myAds' &&
+        renderMyAdsHeader({ selectedIndex, setSelectedIndex })}
+      <FlatList
+        data={products}
+        numColumns={2}
+        showsVerticalScrollIndicator={false}
+        style={{
+          width: '100%',
+          marginTop: 12,
+        }}
+        contentContainerStyle={{
+          paddingBottom: 70,
+        }}
+        columnWrapperStyle={{
+          justifyContent: 'space-between',
+          flex: 1,
+          marginBottom: 24,
+        }}
+        renderItem={({ item }) => (
+          <ProductCard
+            condition={item.condition}
+            id={item.id}
+            image={item.image}
+            name={item.name}
+            price={item.price}
+            seller={{
+              id: '999',
+              name: 'Ivan Seibel',
+              avatar: item.seller_avatar,
+            }}
+          />
+        )}
+      />
     </SC.Main>
   )
 }
