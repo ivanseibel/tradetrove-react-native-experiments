@@ -1,4 +1,4 @@
-import { ArrowLeft, Pencil } from 'phosphor-react-native'
+import { ArrowLeft, Pencil, PencilSimpleLine } from 'phosphor-react-native'
 import { TouchableOpacity, Text, Platform } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -46,7 +46,7 @@ export const EditButton = styled(TouchableOpacity).attrs({
     align-items: center;
 `
 
-export const EditIcon = styled(Pencil).attrs(({ theme }) => ({
+export const EditIcon = styled(PencilSimpleLine).attrs(({ theme }) => ({
   size: 24,
   color: theme.colors.gray2,
 }))``
@@ -211,9 +211,9 @@ export const PaymentMethodsTitle = styled.Text`
 `
 
 export const PaymentMethodsList = styled.View`
-  align-items: flex-start;
-  gap: 4px;
-  align-self: stretch;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `
 
 export const PaymentMethodItem = styled.View`

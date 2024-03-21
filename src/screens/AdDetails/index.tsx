@@ -12,7 +12,6 @@ import {
   Power,
   Trash,
 } from 'phosphor-react-native'
-import { FlatList } from 'react-native'
 import { Button } from '@components/Button'
 import { AdDetailsParams } from '@routes/app.route'
 
@@ -127,20 +126,14 @@ export const AdDetails = () => {
           <SC.PaymentMethods>
             <SC.PaymentMethodsTitle>Payment methods:</SC.PaymentMethodsTitle>
 
-            <FlatList
-              data={paymentMethods}
-              keyExtractor={(item) => item.title}
-              numColumns={2}
-              columnWrapperStyle={{
-                justifyContent: 'space-between',
-              }}
-              renderItem={({ item }) => (
-                <SC.PaymentMethodItem>
+            <SC.PaymentMethodsList>
+              {paymentMethods.map((item) => (
+                <SC.PaymentMethodItem key={item.title}>
                   <item.Icon size={24} color="#000" />
                   <SC.PaymentMethodText>{item.title}</SC.PaymentMethodText>
                 </SC.PaymentMethodItem>
-              )}
-            />
+              ))}
+            </SC.PaymentMethodsList>
           </SC.PaymentMethods>
         </SC.PaymentDetails>
       </SC.Content>
