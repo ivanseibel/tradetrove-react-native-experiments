@@ -9,7 +9,11 @@ type ComponentProps = {
   price: number
   image: string
   condition: 'new' | 'used'
-  seller_avatar: string
+  seller: {
+    id: string
+    name: string
+    avatar: string
+  }
 }
 
 export const ProductCard = ({
@@ -18,12 +22,17 @@ export const ProductCard = ({
   image,
   name,
   price,
-  seller_avatar,
+  seller,
 }: ComponentProps) => {
   const navigation = useNavigation<AppNavigatorRoutesProps>()
 
+  const userId = '999'
+
   const handleProductPress = () => {
-    navigation.navigate('adDetails')
+    navigation.navigate('adDetails', {
+      id,
+      allowEdit: userId === seller.id,
+    })
   }
 
   return (
@@ -31,7 +40,7 @@ export const ProductCard = ({
       <SC.ProductImageContainer>
         <SC.ProductImage source={{ uri: image }} />
         <SC.SellerAvatar
-          source={seller_avatar ? { uri: seller_avatar } : DefaultPhoto}
+          source={seller.avatar ? { uri: seller.avatar } : DefaultPhoto}
         />
 
         <SC.BadgeWrapper condition={condition}>
