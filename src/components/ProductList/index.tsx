@@ -22,6 +22,7 @@ type ProductType = {
 
 type ComponentProps = {
   headerType: 'home' | 'myAds'
+  showInactive?: boolean
 }
 
 const MY_ADS_FILTER_OPTIONS = ['All', 'Active', 'Inactive']
@@ -59,6 +60,7 @@ const products: ProductType[] = [
     id: '3',
     name: 'French Coffee Press',
     price: 50,
+    active: true,
     image: 'https://coffeeclick.ie/wp-content/uploads/2021/09/French-press.png',
     condition: 'new',
     seller: {
@@ -71,6 +73,7 @@ const products: ProductType[] = [
     id: '4',
     name: 'iPhone Charger',
     price: 20,
+    active: true,
     image: 'https://m.media-amazon.com/images/I/51C8GTKZ1DL.jpg',
     condition: 'used',
     seller: {
@@ -83,6 +86,7 @@ const products: ProductType[] = [
     id: '5',
     name: 'Dr. Martens Boots',
     price: 150,
+    active: true,
     image:
       'https://media.glamour.com/photos/5c786327c8f3282db5088766/4:3/w_2400,h_1800,c_limit/0301_drmarten_lede_social_River.jpg',
     condition: 'used',
@@ -96,6 +100,7 @@ const products: ProductType[] = [
     id: '6',
     name: 'Tripod for Camera',
     price: 2500,
+    active: true,
     image:
       'https://res.cloudinary.com/rsc/image/upload/b_rgb:FFFFFF,c_pad,dpr_2.625,f_auto,h_214,q_auto,w_380/c_pad,h_214,w_380/R1438983-01?pgw=1',
     condition: 'new',
@@ -109,6 +114,7 @@ const products: ProductType[] = [
     id: '7',
     name: 'Italian Coffee Press',
     price: 50,
+    active: true,
     image:
       'https://majestycoffee.com/cdn/shop/articles/moka_pot_1534553b-bf80-4b30-86fc-e1087b7cc9f5_800x.jpg?v=1684797291',
     condition: 'new',
@@ -124,6 +130,7 @@ const products: ProductType[] = [
     price: 20,
     image: 'https://image.smythstoys.com/original/desktop/212788.jpg',
     condition: 'used',
+    active: true,
     seller: {
       id: '998',
       name: 'Ivan Seibel',
@@ -134,6 +141,7 @@ const products: ProductType[] = [
     id: '9',
     name: 'Adidas Superstar 2021',
     price: 150,
+    active: true,
     image:
       'https://images.stockx.com/images/adidas-Superstar-Chinese-New-Year-2021-Product.jpg?fit=fill&bg=FFFFFF&w=1200&h=857&fm=webp&auto=compress&dpr=2&trim=color&updated_at=1621454856&q=60',
     condition: 'used',
@@ -147,6 +155,7 @@ const products: ProductType[] = [
     id: '10',
     name: 'DJI Drone Mini 2',
     price: 2500,
+    active: true,
     image:
       'https://www.dpreview.com/files/p/articles/6857732420/DJI_Mavic_Mini_2.jpeg',
     condition: 'new',
@@ -160,6 +169,7 @@ const products: ProductType[] = [
     id: '11',
     name: 'Bicycle Helmet',
     price: 50,
+    active: true,
     image:
       'https://upload.wikimedia.org/wikipedia/commons/b/ba/Bicycle_Helmet_0085.jpg',
     condition: 'new',
@@ -173,6 +183,7 @@ const products: ProductType[] = [
     id: '12',
     name: 'Cricket Ball',
     price: 20,
+    active: true,
     image:
       'https://www.shutterstock.com/image-vector/cricket-ball-sports-equipment-realistic-600nw-468996683.jpg',
     condition: 'used',
@@ -186,6 +197,7 @@ const products: ProductType[] = [
     id: '13',
     name: 'Pilot Sunglasses',
     price: 150,
+    active: true,
     image:
       'https://media.tiffany.com/is/image/Tiffany/EcomItemL2/tiffany-tpilot-sunglasses-70455218_1029533_ED.jpg',
     condition: 'used',
@@ -235,7 +247,10 @@ const renderMyAdsHeader = ({
   )
 }
 
-export const ProductList = ({ headerType }: ComponentProps) => {
+export const ProductList = ({
+  headerType,
+  showInactive = false,
+}: ComponentProps) => {
   const [selectedIndex, setSelectedIndex] = useState<IndexPath>(
     new IndexPath(0)
   )
@@ -246,7 +261,9 @@ export const ProductList = ({ headerType }: ComponentProps) => {
       {headerType === 'myAds' &&
         renderMyAdsHeader({ selectedIndex, setSelectedIndex })}
       <FlatList
-        data={products}
+        data={
+          showInactive ? products : products.filter((product) => product.active)
+        }
         numColumns={2}
         showsVerticalScrollIndicator={false}
         style={{
