@@ -53,13 +53,19 @@ export const ProductCard = ({
         <SC.BadgeWrapper condition={condition}>
           <SC.ConditionBadgeText>{condition}</SC.ConditionBadgeText>
         </SC.BadgeWrapper>
+
+        {!active && (
+          <SC.ProductInactiveOverlay>
+            <SC.ProductInactiveText>AD INACTIVED</SC.ProductInactiveText>
+          </SC.ProductInactiveOverlay>
+        )}
       </SC.ProductImageContainer>
 
       <SC.ProductInfo>
-        <SC.ProductName>{name}</SC.ProductName>
+        <SC.ProductName active={active}>{name}</SC.ProductName>
         <SC.ProductPriceContainer>
-          <SC.ProductPriceCurrency>$</SC.ProductPriceCurrency>
-          <SC.ProductPrice>
+          <SC.ProductPriceCurrency active={active}>$</SC.ProductPriceCurrency>
+          <SC.ProductPrice active={active}>
             {Math.floor(price)
               .toFixed(2)
               .replace(/\d(?=(\d{3})+\.)/g, '$&,')}
