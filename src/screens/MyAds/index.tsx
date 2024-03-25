@@ -1,8 +1,4 @@
-import { ContentText } from '@components/ContentText'
-
 import * as SC from './styles'
-import { useState } from 'react'
-import { IndexPath, Select, SelectItem } from '@ui-kitten/components'
 import { ProductList } from '@components/ProductList'
 
 export const MyAds: React.FC = () => {
@@ -15,7 +11,7 @@ export const MyAds: React.FC = () => {
         </SC.AddButton>
       </SC.Header>
 
-      <ProductList headerType="myAds" />
+      <ProductList headerType="myAds" showInactive={true} />
     </SC.Main>
   )
 }
