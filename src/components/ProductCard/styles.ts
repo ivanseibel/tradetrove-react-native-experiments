@@ -5,6 +5,10 @@ type ConditionBadgeProps = {
   condition: 'new' | 'used'
 }
 
+type ProductCardProps = {
+  active: boolean
+}
+
 export const Main = styled(TouchableOpacity).attrs({
   activeOpacity: 0.8,
 })`
@@ -72,6 +76,23 @@ export const BadgeWrapper = styled.View<ConditionBadgeProps>`
   right: 4px;
 `
 
+export const ProductInactiveOverlay = styled.View`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+`
+
+export const ProductInactiveText = styled.Text`
+  color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.fontFamily.regular};
+  font-size: ${({ theme }) => theme.fontSize.sm}px;
+  line-height: ${({ theme }) => theme.lineHeight.sm}px;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+`
+
 export const ConditionBadgeText = styled.Text`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.regular};
@@ -89,12 +110,13 @@ export const ProductInfo = styled.View`
 
 export const ProductName = styled(Text).attrs({
   numberOfLines: 1,
-})`
+})<ProductCardProps>`
   height: 18px;
   align-items: center;
   align-self: stretch;
 
-  color: ${({ theme }) => theme.colors.gray2};
+  color: ${({ theme, active }) =>
+    active ? theme.colors.gray2 : theme.colors.gray4};
   font-family: ${({ theme }) => theme.fontFamily.regular};
   font-size: ${({ theme }) => theme.fontSize.sm}px;
   line-height: ${({ theme }) => theme.lineHeight.sm}px;
@@ -107,15 +129,17 @@ export const ProductPriceContainer = styled.View`
   align-self: stretch;
 `
 
-export const ProductPriceCurrency = styled.Text`
-  color: ${({ theme }) => theme.colors.gray1};
+export const ProductPriceCurrency = styled.Text<ProductCardProps>`
+  color: ${({ theme, active }) =>
+    active ? theme.colors.gray1 : theme.colors.gray4};
   font-family: ${({ theme }) => theme.fontFamily.bold};
   font-size: ${({ theme }) => theme.fontSize.xs}px;
   margin-bottom: 2px;
 `
 
-export const ProductPrice = styled.Text`
-  color: ${({ theme }) => theme.colors.gray1};
+export const ProductPrice = styled.Text<ProductCardProps>`
+  color: ${({ theme, active }) =>
+    active ? theme.colors.gray1 : theme.colors.gray4};
   font-family: ${({ theme }) => theme.fontFamily.bold};
   font-size: ${({ theme }) => theme.fontSize.md}px;
 `
