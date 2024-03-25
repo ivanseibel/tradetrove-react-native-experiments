@@ -19,7 +19,7 @@ export const ImgCarousel = () => {
             }}
           />
           <SC.DarkenOverlay>
-            <SC.InactiveText>AD IS INACTIVATED</SC.InactiveText>
+            <SC.InactiveText>AD INACTIVATED</SC.InactiveText>
           </SC.DarkenOverlay>
         </SC.Slide>
         <SC.Slide>
