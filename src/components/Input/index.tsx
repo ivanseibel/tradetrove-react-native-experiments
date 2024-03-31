@@ -9,12 +9,16 @@ import { useState } from 'react'
 type ComponentProps = TextInputProps & {
   errorMessage?: string
   type?: 'text' | 'password'
+  multiline?: boolean
+  multilineHeight?: number
 }
 
 export const TextInput = ({
   errorMessage = undefined,
   onChange,
   type = 'text',
+  multiline = false,
+  multilineHeight = 160,
   ...rest
 }: ComponentProps) => {
   const [isFocused, setIsFocused] = useState(false)
@@ -43,11 +47,14 @@ export const TextInput = ({
         error={!!errorMessage}
         isFocused={isFocused}
         isFilled={isFilled}
+        multiline={multiline}
       >
         <SC.TextInput
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           secureTextEntry={type === 'password' && !isPasswordVisible}
+          multiline={multiline}
+          multilineHeight={multiline ? multilineHeight : undefined}
           {...rest}
           onChange={handleOnChange}
         />
