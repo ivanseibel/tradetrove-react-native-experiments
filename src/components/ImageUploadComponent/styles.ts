@@ -6,9 +6,9 @@ const { width } = Dimensions.get('window')
 
 export const Main = styled.View`
   flex-direction: row;
-  justify-content: space-between;
+  gap: 10px;
   align-items: center;
-  align-self: stretch;
+  align-self: flex-start;
 `
 
 export const ImageContainer = styled.View`
@@ -40,7 +40,4 @@ export const Placeholder = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.colors.gray5};
   justify-content: center;
   align-items: center;
-  /* border-width: 1px; */
-  /* border-color: ${({ theme }) => theme.colors.gray2}; */
-  /* border-style: dashed; */
 `
