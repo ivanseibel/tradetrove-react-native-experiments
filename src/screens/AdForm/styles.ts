@@ -40,3 +40,31 @@ export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => ({
   size: 24,
   color: theme.colors.gray2,
 }))``
+
+export const ImageContainer = styled.View`
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+  margin-top: 20px;
+`
+
+export const SectionTitle = styled.Text`
+  align-self: stretch;
+  color: var(--Gray_2, #3E3A40);
+  font-family: ${({ theme }) => theme.fontFamily.bold};
+  font-size: ${({ theme }) => theme.fontSize.md}px;
+  line-height: 20.8px;
+`
+
+export const SectionDescription = styled.Text`
+  align-self: stretch;
+  color: ${({ theme }) => theme.colors.gray3};
+  font-family: ${({ theme }) => theme.fontFamily.regular};
+  font-size: ${({ theme }) => theme.fontSize.sm}px;
+  line-height: 18.2px;
+`
+
+export const AboutContainer = styled.View`
+  gap: 16px;
+  align-self: stretch;
+`
