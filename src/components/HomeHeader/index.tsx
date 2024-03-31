@@ -1,9 +1,17 @@
 import { Button } from '@components/Button'
 import * as SC from './styles'
 import { Plus } from 'phosphor-react-native'
+import { useNavigation } from '@react-navigation/native'
+import { AppNavigatorRoutesProps } from '@routes/app.route'
 
 export const HomeHeader = () => {
+  const navigation = useNavigation<AppNavigatorRoutesProps>()
+
   const name = 'Ivan Seibel'
+
+  const handleNewAd = () => {
+    navigation.navigate('adForm')
+  }
 
   return (
     <SC.Main>
@@ -20,7 +28,7 @@ export const HomeHeader = () => {
           type="black"
           Icon={Plus}
           iconColor="light"
-          onPress={() => {}}
+          onPress={handleNewAd}
         />
       </SC.ButtonContainer>
     </SC.Main>
