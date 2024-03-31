@@ -2,6 +2,7 @@ import { ImageUploadComponent } from '@components/ImageUploadComponent'
 import * as SC from './styles'
 import { View } from 'react-native'
 import { TextInput } from '@components/Input'
+import { RadioButtonGroup } from '@components/RadioButtonGroup'
 
 const fakeProps = {
   operation: 'create',
@@ -38,6 +39,14 @@ export const AdForm = () => {
 
         <TextInput placeholder="Title" />
         <TextInput placeholder="Description" multiline numberOfLines={4} />
+
+        <RadioButtonGroup
+          options={[
+            { id: '1', label: 'New' },
+            { id: '2', label: 'Used' },
+          ]}
+          onSelect={(selectedId) => console.log(selectedId)}
+        />
       </SC.AboutContainer>
     </SC.Main>
   )
