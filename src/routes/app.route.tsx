@@ -10,6 +10,7 @@ import { Alert, Platform, TouchableOpacity, View } from 'react-native'
 import { House, SignOut, Tag } from 'phosphor-react-native'
 import { MyAds } from '@screens/MyAds'
 import { AdDetails } from '@screens/AdDetails'
+import { AdForm } from '@screens/AdForm'
 
 export type AdDetailsParams = {
   id: string
@@ -21,6 +22,7 @@ type AppRoutes = {
   myAds: undefined
   signOut: undefined
   adDetails: AdDetailsParams
+  adForm: undefined
 }
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>
@@ -129,6 +131,11 @@ export const AppRoutes: React.FC = () => {
       <Screen
         name="adDetails"
         component={AdDetails}
+        options={{ tabBarButton: () => null, tabBarStyle: { display: 'none' } }}
+      />
+      <Screen
+        name="adForm"
+        component={AdForm}
         options={{ tabBarButton: () => null, tabBarStyle: { display: 'none' } }}
       />
     </Navigator>
