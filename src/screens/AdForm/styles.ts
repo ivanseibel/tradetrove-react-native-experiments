@@ -50,7 +50,7 @@ export const ImageContainer = styled.View`
 
 export const SectionTitle = styled.Text`
   align-self: stretch;
-  color: var(--Gray_2, #3E3A40);
+  color: ${({ theme }) => theme.colors.gray2};
   font-family: ${({ theme }) => theme.fontFamily.bold};
   font-size: ${({ theme }) => theme.fontSize.md}px;
   line-height: 20.8px;
