@@ -2,11 +2,13 @@ import { ScrollView, View } from 'react-native'
 import * as SC from './styles'
 import Logo from '@assets/logo-small.png'
 import { ContentText } from '@components/ContentText'
-import { TextInput } from '@components/Input'
 import { Button } from '@components/Button'
 import { VerticalSpace } from '@components/VerticalSpace'
 import { useNavigation } from '@react-navigation/native'
 import { Avatar } from '@components/Avatar'
+import { InputWrapper } from '@components/Input/InputWrapper'
+import { TextInput } from '@components/Input/TextInput'
+import { PasswordVisibility } from '@components/Input/PasswordVisibility'
 
 export const SignUp = () => {
   const navigation = useNavigation()
@@ -60,45 +62,52 @@ export const SignUp = () => {
           >
             <Avatar />
 
-            <TextInput
-              placeholder="Name"
-              keyboardType="default"
-              autoCapitalize="words"
-              autoCorrect={false}
-              errorMessage=""
-            />
+            <InputWrapper errorMessage="">
+              <TextInput
+                placeholder="Name"
+                keyboardType="default"
+                autoCapitalize="words"
+                autoCorrect={false}
+              />
+            </InputWrapper>
 
-            <TextInput
-              placeholder="E-mail"
-              keyboardType="email-address"
-              autoCapitalize="none"
-              autoCorrect={false}
-              errorMessage=""
-            />
+            <InputWrapper errorMessage="">
+              <TextInput
+                placeholder="E-mail"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+            </InputWrapper>
 
-            <TextInput
-              placeholder="Telephone"
-              keyboardType="phone-pad"
-              autoCapitalize="none"
-              autoCorrect={false}
-              errorMessage=""
-            />
+            <InputWrapper errorMessage="">
+              <TextInput
+                placeholder="Telephone"
+                keyboardType="phone-pad"
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+            </InputWrapper>
 
-            <TextInput
-              placeholder="Password"
-              type="password"
-              autoCapitalize="none"
-              autoCorrect={false}
-              errorMessage=""
-            />
+            <InputWrapper errorMessage="">
+              <TextInput
+                placeholder="Password"
+                secureTextEntry
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+              <PasswordVisibility />
+            </InputWrapper>
 
-            <TextInput
-              placeholder="Confirm Password"
-              type="password"
-              autoCapitalize="none"
-              autoCorrect={false}
-              errorMessage=""
-            />
+            <InputWrapper errorMessage="">
+              <TextInput
+                placeholder="Confirm Password"
+                secureTextEntry
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
+              <PasswordVisibility />
+            </InputWrapper>
 
             <VerticalSpace height={4} />
             <Button label="Create account" type="black" onPress={() => {}} />
