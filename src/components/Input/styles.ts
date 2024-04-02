@@ -16,7 +16,7 @@ type InputProps = {
 
 export const InputController = styled.View`
   width: 100%;
-  gap: 4px
+  gap: 4px;
 `
 
 export const InputErrorLabel = styled.Text`
@@ -47,7 +47,8 @@ export const TextInputContainer = styled.View<InputContainerProps>`
 export const TextInput = styled(NativeTextInput).attrs({
   placeholderTextColor: theme.colors.gray4,
 })<InputProps>`
-flex: 1;
+  flex: 1;
+  min-width: 200px;
   padding: 12px 16px;
   color: ${theme.colors.gray2};
   font-size: ${theme.fontSize.md}px;
