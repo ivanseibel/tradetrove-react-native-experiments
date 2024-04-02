@@ -1,7 +1,7 @@
 import { SearchInput } from '@components/SearchInput'
 import * as SC from './styles'
 import { ProductCard } from '@components/ProductCard'
-import { FlatList, Text } from 'react-native'
+import { FlatList } from 'react-native'
 import { ContentText } from '@components/ContentText'
 import { IndexPath, Select, SelectItem } from '@ui-kitten/components'
 import { useState } from 'react'
