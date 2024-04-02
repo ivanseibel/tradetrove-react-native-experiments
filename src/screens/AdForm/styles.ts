@@ -68,3 +68,21 @@ export const AboutContainer = styled.View`
   gap: 16px;
   align-self: stretch;
 `
+
+export const PriceContainer = styled.View`
+  flex-direction: row;
+  padding: 0 16px;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+
+  border-radius: 6px;
+  background: ${({ theme }) => theme.colors.gray7};
+`
+
+export const Currency = styled.Text`
+  color: ${({ theme }) => theme.colors.gray1};
+  font-family: ${({ theme }) => theme.fontFamily.regular};
+  font-size: ${({ theme }) => theme.fontSize.md}px;
+  line-height: 20.8px;
+`
