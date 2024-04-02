@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { View, TouchableOpacity, Text } from 'react-native'
 import * as SC from './styles'
 
 type Option = {
