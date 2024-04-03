@@ -9,8 +9,11 @@ import { Avatar } from '@components/Avatar'
 import { InputWrapper } from '@components/Input/InputWrapper'
 import { TextInput } from '@components/Input/TextInput'
 import { PasswordVisibility } from '@components/Input/PasswordVisibility'
+import { useState } from 'react'
 
 export const SignUp = () => {
+  const [avatar, setAvatar] = useState<string>('')
+
   const navigation = useNavigation()
 
   const handleNavigateBack = () => {
@@ -60,7 +63,10 @@ export const SignUp = () => {
               gap: 14,
             }}
           >
-            <Avatar />
+            <Avatar
+              source={avatar ? { uri: avatar } : undefined}
+              setAvatar={setAvatar}
+            />
 
             <InputWrapper errorMessage="">
               <TextInput
