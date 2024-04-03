@@ -1,15 +1,7 @@
 import React, { useState } from 'react'
-import {
-  View,
-  TouchableOpacity,
-  Image,
-  Alert,
-  Text,
-  StyleSheet,
-} from 'react-native'
+import { Alert, StyleSheet } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
 import * as SC from './styles'
-import { CloseIcon } from '@components/FilterOptionsModal/styles'
 import { Plus, X } from 'phosphor-react-native'
 import theme from '@theme/index'
 
