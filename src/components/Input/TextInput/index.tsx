@@ -1,4 +1,8 @@
-import { TextInputProps } from 'react-native'
+import {
+  NativeSyntheticEvent,
+  TextInputChangeEventData,
+  TextInputProps,
+} from 'react-native'
 import * as SC from './styles'
 import { useInputContext } from '../InputWrapper'
 
@@ -9,16 +13,20 @@ export const TextInput = (props: TextInputProps) => {
 
   setIsPasswordInput(!!secureTextEntry)
 
-  const handleOnChangeText = (text: string) => {
-    setFilled(!!text)
-    props.onChangeText?.(text)
+  const handleOnChange = (
+    e: NativeSyntheticEvent<TextInputChangeEventData>
+  ) => {
+    if (props.onChange) {
+      props.onChange(e)
+    }
+    setFilled(!!e.nativeEvent.text)
   }
 
   return (
     <SC.TextInput
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
-      onChangeText={handleOnChangeText}
+      onChange={handleOnChange}
       {...props}
       secureTextEntry={!passwordVisible && !!secureTextEntry}
     />
