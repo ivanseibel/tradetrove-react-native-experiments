@@ -44,11 +44,6 @@ export const SignIn = () => {
           }}
         >
           <ContentText type="dark">Access your account</ContentText>
-          {/* <TextInput
-            placeholder="E-mail"
-            errorMessage=""
-            keyboardType="email-address"
-          /> */}
           <InputWrapper errorMessage="">
             <TextInput placeholder="E-mail" keyboardType="email-address" />
           </InputWrapper>
@@ -57,7 +52,6 @@ export const SignIn = () => {
             <TextInput placeholder="Password" secureTextEntry />
             <PasswordVisibility />
           </InputWrapper>
-          {/* <TextInput placeholder="Password" errorMessage="" type="password" /> */}
           <VerticalSpace height={4} />
           <Button label="Sign in" type="blue" onPress={() => {}} />
         </View>
