@@ -14,6 +14,7 @@ export const AvatarContainer = styled.View`
   height: 100%;
   border-radius: 44px;
   border-color: ${({ theme }) => theme.colors.bluelight};
+  border-width: 3px;
   position: relative;
 `
 
@@ -22,6 +23,7 @@ export const AvatarImage = styled(Image).attrs({
 })`
   width: 100%;
   height: 100%;
+  border-radius: 44px;
 `
 
 export const EditButton = styled.View`
