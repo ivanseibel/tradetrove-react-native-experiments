@@ -8,9 +8,12 @@ import {
   ScrollView,
   Keyboard,
 } from 'react-native'
-import { TextInput } from '@components/Input'
 import { RadioButtonGroup } from '@components/RadioButtonGroup'
 import { useNavigation } from '@react-navigation/native'
+import { InputWrapper } from '@components/Input/InputWrapper'
+import { TextInput } from '@components/Input/TextInput'
+import { Currency } from '@components/Input/Currency'
+import { VerticalSpace } from '@components/VerticalSpace'
 
 const fakeProps = {
   operation: 'create',
@@ -24,24 +27,31 @@ export const AdForm = () => {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
-        style={{ flex: 1 }}
-      >
-        <ScrollView>
-          <SC.Main>
-            <SC.Header>
-              <SC.NavigationButton onPress={handleBack}>
-                <SC.BackIcon />
-              </SC.NavigationButton>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
+      style={{ flex: 1 }}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <SC.Main>
+          <SC.Header>
+            <SC.NavigationButton onPress={handleBack}>
+              <SC.BackIcon />
+            </SC.NavigationButton>
 
-              <SC.HeaderTitle>
-                {fakeProps.operation === 'create' ? 'Create Ad' : 'Edit Ad'}
-              </SC.HeaderTitle>
-            </SC.Header>
-
+            <SC.HeaderTitle>
+              {fakeProps.operation === 'create' ? 'Create Ad' : 'Edit Ad'}
+            </SC.HeaderTitle>
+          </SC.Header>
+          <ScrollView
+            style={{ width: '100%' }}
+            contentContainerStyle={{
+              flexGrow: 1,
+              marginBottom: 20,
+            }}
+            contentInset={{ bottom: 5 }}
+            showsVerticalScrollIndicator={false}
+          >
             <SC.ImageContainer>
               <SC.SectionTitle>Photos</SC.SectionTitle>
               <SC.SectionDescription>
@@ -58,12 +68,21 @@ export const AdForm = () => {
             <SC.AboutContainer>
               <SC.SectionTitle>About this product</SC.SectionTitle>
 
-              <TextInput placeholder="Title" />
-              <TextInput
-                placeholder="Description"
-                multiline
-                numberOfLines={4}
-              />
+              <InputWrapper errorMessage="">
+                <TextInput
+                  placeholder="Title"
+                  keyboardType="default"
+                  autoCorrect={false}
+                />
+              </InputWrapper>
+
+              <InputWrapper errorMessage="">
+                <TextInput
+                  placeholder="Description"
+                  multiline
+                  numberOfLines={4}
+                />
+              </InputWrapper>
 
               <RadioButtonGroup
                 options={[
@@ -73,14 +92,18 @@ export const AdForm = () => {
                 onSelect={(selectedId) => console.log(selectedId)}
               />
 
-              <SC.PriceContainer>
-                <SC.Currency>EUR</SC.Currency>
-                <TextInput placeholder="Price" />
-              </SC.PriceContainer>
+              <InputWrapper errorMessage="">
+                <Currency>EUR</Currency>
+                <TextInput
+                  placeholder="Price"
+                  keyboardType="numeric"
+                  autoCorrect={false}
+                />
+              </InputWrapper>
             </SC.AboutContainer>
-          </SC.Main>
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </TouchableWithoutFeedback>
+          </ScrollView>
+        </SC.Main>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   )
 }
