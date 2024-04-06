@@ -62,6 +62,7 @@ export const AdForm = () => {
             }}
             contentInset={{ bottom: 5 }}
             showsVerticalScrollIndicator={false}
+            bounces={false}
           >
             <SC.ImageContainer>
               <SC.SectionTitle>Photos</SC.SectionTitle>
