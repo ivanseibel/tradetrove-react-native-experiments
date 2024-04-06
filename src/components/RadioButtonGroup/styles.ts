@@ -8,8 +8,6 @@ type CircleProps = {
 export const Container = styled.View`
   flex-direction: row;
   align-self: stretch;
-  margin-top: 10px;
-  margin-bottom: 10px;
   align-items: flex-start;
   gap: 24px;
 `
@@ -17,7 +15,6 @@ export const Container = styled.View`
 export const Button = styled(TouchableOpacity)`
   flex-direction: row;
   align-items: center;
-  margin-bottom: 10px;
 `
 
 export const Label = styled.Text`
