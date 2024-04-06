@@ -10,10 +10,6 @@ type InputContainerProps = {
   multiline?: boolean
 }
 
-// type InputProps = {
-//   multilineHeight?: number
-// }
-
 export const InputController = styled.View`
   width: 100%;
   gap: 4px;
@@ -23,13 +19,13 @@ export const InputErrorLabel = styled.Text`
   color: ${theme.colors.redlight}
 `
 
-export const TextInputContainer = styled.View<InputContainerProps>`
+export const InputContainer = styled.View<InputContainerProps>`
    width: 100%;
 
    flex-direction: row;
    align-items: center;
    gap: 8px;
-   padding-right: 16px;
+   padding: 0 16px;
 
    background-color: ${theme.colors.gray7};
    border-width: ${({ error, isFocused, isFilled }) =>
