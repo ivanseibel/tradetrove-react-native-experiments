@@ -16,6 +16,7 @@ import { Currency } from '@components/Input/Currency'
 import { Toggle } from '@ui-kitten/components'
 import { useState } from 'react'
 import { VerticalSpace } from '@components/VerticalSpace'
+import { CheckboxGroup } from '@components/CheckboxGroup'
 
 const fakeProps = {
   operation: 'create',
@@ -53,7 +54,7 @@ export const AdForm = () => {
             </SC.HeaderTitle>
           </SC.Header>
           <ScrollView
-            style={{ width: '100%' }}
+            style={{ width: '100%', flex: 1 }}
             contentContainerStyle={{
               flexGrow: 1,
               marginBottom: 20,
@@ -119,6 +120,24 @@ export const AdForm = () => {
                 checked={checked}
                 onChange={onCheckedChange}
                 style={{ margin: 0 }}
+              />
+            </SC.SectionContainer>
+
+            <VerticalSpace height={20} />
+
+            <SC.SectionContainer>
+              <SC.SectionTitle>Payment methods</SC.SectionTitle>
+              <CheckboxGroup
+                columns={2}
+                options={[
+                  { label: 'Cash', value: false },
+                  { label: 'Credit Card', value: false },
+                  { label: 'Debit Card', value: false },
+                  { label: 'Bank Transfer', value: false },
+                  { label: 'Paypal', value: false },
+                  { label: 'Bitcoin', value: false },
+                ]}
+                onChange={(index) => console.log(index)}
               />
             </SC.SectionContainer>
           </ScrollView>
