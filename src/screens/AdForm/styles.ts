@@ -1,15 +1,15 @@
 import { ArrowLeft } from 'phosphor-react-native'
-import { TouchableOpacity, View } from 'react-native'
+import { Platform, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 export const Main = styled(SafeAreaView).attrs({
-  edges: ['bottom', 'top'],
+  edges: ['top'],
 })`
   flex: 1;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.gray6};
-  padding: 10px 24px
+  padding: 10px 0 0;
 `
 
 export const Header = styled.View`
@@ -17,6 +17,7 @@ export const Header = styled.View`
   width: 100%;
   align-items: center;
   gap: 8px;
+  padding: 0 24px;
 `
 
 export const HeaderTitle = styled.Text`
@@ -47,6 +48,7 @@ export const ImageContainer = styled.Pressable`
   gap: 4px;
   align-self: stretch;
   margin-top: 20px;
+  padding: 0 24px;
 `
 
 export const SectionTitle = styled.Text`
@@ -69,4 +71,16 @@ export const SectionContainer = styled.Pressable`
   gap: 16px;
   align-self: stretch;
   align-items: flex-start;
+  padding: 0 24px;
+`
+
+export const Footer = styled(SafeAreaView).attrs({
+  edges: ['bottom'],
+})`
+  background-color: ${({ theme }) => theme.colors.white};
+  padding: ${Platform.OS === 'ios' ? '24px 24px 6px' : '24px'};
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 `
