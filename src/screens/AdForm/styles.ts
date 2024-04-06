@@ -13,7 +13,6 @@ export const Main = styled(SafeAreaView).attrs({
 `
 
 export const Header = styled.View`
-  display: flex;
   flex-direction: row;
   width: 100%;
   align-items: center;
@@ -43,7 +42,7 @@ export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => ({
   color: theme.colors.gray2,
 }))``
 
-export const ImageContainer = styled.View`
+export const ImageContainer = styled.Pressable`
   align-items: flex-start;
   gap: 4px;
   align-self: stretch;
@@ -66,26 +65,8 @@ export const SectionDescription = styled.Text`
   line-height: 18.2px;
 `
 
-export const SectionContainer = styled.View`
+export const SectionContainer = styled.Pressable`
   gap: 16px;
   align-self: stretch;
   align-items: flex-start;
 `
-
-/* export const PriceContainer = styled.View`
-  flex-direction: row;
-  padding: 0 16px;
-  align-items: center;
-  gap: 8px;
-  align-self: stretch;
-
-  border-radius: 6px;
-  background: ${({ theme }) => theme.colors.gray7};
-`
-
-export const Currency = styled.Text`
-  color: ${({ theme }) => theme.colors.gray1};
-  font-family: ${({ theme }) => theme.fontFamily.regular};
-  font-size: ${({ theme }) => theme.fontSize.md}px;
-  line-height: 20.8px;
-` */
