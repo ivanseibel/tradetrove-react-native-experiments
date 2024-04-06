@@ -17,6 +17,7 @@ import { Toggle } from '@ui-kitten/components'
 import { useState } from 'react'
 import { VerticalSpace } from '@components/VerticalSpace'
 import { CheckboxGroup } from '@components/CheckboxGroup'
+import { Button } from '@components/Button'
 
 const fakeProps = {
   operation: 'create',
@@ -140,6 +141,27 @@ export const AdForm = () => {
                 onChange={(index) => console.log(index)}
               />
             </SC.SectionContainer>
+
+            <VerticalSpace height={20} />
+
+            <SC.Footer>
+              <Button
+                label="Cancel"
+                onPress={() => console.log('Cancel')}
+                type="gray"
+                style={{
+                  width: '48%',
+                }}
+              />
+              <Button
+                label="Publish"
+                onPress={() => console.log('Publish')}
+                type="black"
+                style={{
+                  width: '48%',
+                }}
+              />
+            </SC.Footer>
           </ScrollView>
         </SC.Main>
       </TouchableWithoutFeedback>
