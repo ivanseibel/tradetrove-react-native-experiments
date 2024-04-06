@@ -13,6 +13,8 @@ import { useNavigation } from '@react-navigation/native'
 import { InputWrapper } from '@components/Input/InputWrapper'
 import { TextInput } from '@components/Input/TextInput'
 import { Currency } from '@components/Input/Currency'
+import { Toggle } from '@ui-kitten/components'
+import { useState } from 'react'
 import { VerticalSpace } from '@components/VerticalSpace'
 
 const fakeProps = {
@@ -20,7 +22,14 @@ const fakeProps = {
 }
 
 export const AdForm = () => {
+  const [checked, setChecked] = useState(false)
   const navigation = useNavigation()
+
+  const onCheckedChange = (
+    isChecked: boolean | ((prevState: boolean) => boolean)
+  ) => {
+    setChecked(isChecked)
+  }
 
   const handleBack = () => {
     navigation.goBack()
@@ -65,7 +74,7 @@ export const AdForm = () => {
 
             <View style={{ height: 20 }} />
 
-            <SC.AboutContainer>
+            <SC.SectionContainer>
               <SC.SectionTitle>About this product</SC.SectionTitle>
 
               <InputWrapper errorMessage="">
@@ -100,7 +109,18 @@ export const AdForm = () => {
                   autoCorrect={false}
                 />
               </InputWrapper>
-            </SC.AboutContainer>
+            </SC.SectionContainer>
+
+            <VerticalSpace height={20} />
+
+            <SC.SectionContainer>
+              <SC.SectionTitle>Accepts trade?</SC.SectionTitle>
+              <Toggle
+                checked={checked}
+                onChange={onCheckedChange}
+                style={{ margin: 0 }}
+              />
+            </SC.SectionContainer>
           </ScrollView>
         </SC.Main>
       </TouchableWithoutFeedback>

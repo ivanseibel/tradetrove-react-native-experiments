@@ -66,9 +66,10 @@ export const SectionDescription = styled.Text`
   line-height: 18.2px;
 `
 
-export const AboutContainer = styled.View`
+export const SectionContainer = styled.View`
   gap: 16px;
   align-self: stretch;
+  align-items: flex-start;
 `
 
 /* export const PriceContainer = styled.View`
