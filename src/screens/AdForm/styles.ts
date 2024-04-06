@@ -1,9 +1,11 @@
 import { ArrowLeft } from 'phosphor-react-native'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-export const Main = styled(SafeAreaView)`
+export const Main = styled(SafeAreaView).attrs({
+  edges: ['bottom', 'top'],
+})`
   flex: 1;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.gray6};
@@ -69,7 +71,7 @@ export const AboutContainer = styled.View`
   align-self: stretch;
 `
 
-export const PriceContainer = styled.View`
+/* export const PriceContainer = styled.View`
   flex-direction: row;
   padding: 0 16px;
   align-items: center;
@@ -85,4 +87,4 @@ export const Currency = styled.Text`
   font-family: ${({ theme }) => theme.fontFamily.regular};
   font-size: ${({ theme }) => theme.fontSize.md}px;
   line-height: 20.8px;
-`
+` */
