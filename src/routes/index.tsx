@@ -4,7 +4,7 @@ import { AppRoutes } from './app.route'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 export const Routes = () => {
-  const isAuthenticated = false
+  const isAuthenticated = true
 
   return (
     <SafeAreaProvider>
