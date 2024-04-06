@@ -9,15 +9,22 @@ type ComponentProps = {
 type InputContextType = {
   isFocused: boolean
   isFilled: boolean
-  passwordVisible?: boolean
+  isPasswordVisible?: boolean
   isPasswordInput?: boolean
   setFocus: (focused: boolean) => void
   setFilled: (filled: boolean) => void
   setPasswordVisible: (visible: boolean) => void
-  setIsPasswordInput: (isPassword: boolean) => void
+  setPasswordInput: (isPassword: boolean) => void
 }
 
-const InputContext = createContext({} as InputContextType)
+const InputContext = createContext({
+  isFocused: false,
+  isFilled: false,
+  setFocus: () => {},
+  setFilled: () => {},
+  setPasswordVisible: () => {},
+  setPasswordInput: () => {},
+} as InputContextType)
 
 export const useInputContext = () => useContext(InputContext)
 
@@ -27,36 +34,39 @@ export const InputWrapper = ({
 }: ComponentProps) => {
   const [isFocused, setIsFocused] = useState(false)
   const [isFilled, setIsFilled] = useState(false)
-  const [passwordVisible, setPasswordVisible] = useState(false)
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [isPasswordInput, setIsPasswordInput] = useState(false)
 
   const setFocus = (focused: boolean) => setIsFocused(focused)
   const setFilled = (filled: boolean) => setIsFilled(filled)
+  const setPasswordVisible = (visible: boolean) => setIsPasswordVisible(visible)
+  const setPasswordInput = (isPassword: boolean) =>
+    setIsPasswordInput(isPassword)
 
   return (
     <InputContext.Provider
       value={{
         isFocused,
         isFilled,
-        passwordVisible,
+        isPasswordVisible,
         isPasswordInput,
         setFocus,
         setFilled,
         setPasswordVisible,
-        setIsPasswordInput,
+        setPasswordInput,
       }}
     >
       <SC.InputController>
         {!!errorMessage && (
           <SC.InputErrorLabel>{errorMessage}</SC.InputErrorLabel>
         )}
-        <SC.TextInputContainer
+        <SC.InputContainer
           error={!!errorMessage}
           isFocused={isFocused}
           isFilled={isFilled}
         >
           {children}
-        </SC.TextInputContainer>
+        </SC.InputContainer>
       </SC.InputController>
     </InputContext.Provider>
   )
