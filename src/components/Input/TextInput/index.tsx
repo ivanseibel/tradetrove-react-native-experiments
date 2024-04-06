@@ -1,34 +1,29 @@
-import {
-  NativeSyntheticEvent,
-  TextInputChangeEventData,
-  TextInputProps,
-} from 'react-native'
+import { TextInputProps } from 'react-native'
 import * as SC from './styles'
 import { useInputContext } from '../InputWrapper'
+import { useEffect } from 'react'
 
 export const TextInput = (props: TextInputProps) => {
   const { secureTextEntry } = props
-  const { setIsPasswordInput, setFilled, setFocus, passwordVisible } =
+  const { setPasswordInput, setFilled, setFocus, isPasswordVisible } =
     useInputContext()
 
-  setIsPasswordInput(!!secureTextEntry)
-
-  const handleOnChange = (
-    e: NativeSyntheticEvent<TextInputChangeEventData>
-  ) => {
-    if (props.onChange) {
-      props.onChange(e)
-    }
-    setFilled(!!e.nativeEvent.text)
-  }
+  useEffect(() => {
+    setPasswordInput(!!secureTextEntry)
+  }, [secureTextEntry, setPasswordInput])
 
   return (
     <SC.TextInput
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
-      onChange={handleOnChange}
+      onChange={(e) => {
+        if (props.onChange) {
+          props.onChange(e)
+        }
+        setFilled(!!e.nativeEvent.text)
+      }}
       {...props}
-      secureTextEntry={!passwordVisible && !!secureTextEntry}
+      secureTextEntry={!isPasswordVisible && !!secureTextEntry}
     />
   )
 }
