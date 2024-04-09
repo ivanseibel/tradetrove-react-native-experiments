@@ -14,7 +14,7 @@ import { AdForm } from '@screens/AdForm'
 
 export type AdDetailsParams = {
   id: string
-  allowEdit?: boolean
+  detailsType?: 'myAd' | 'ad' | 'preview'
 }
 
 type AppRoutes = {
