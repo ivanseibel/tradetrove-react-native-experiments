@@ -16,14 +16,14 @@ export const Main = styled.View`
 
 export const CarouselViewer = styled(PagerView)`
   width: ${width}px;
-  height: 280px;
+  height: 265px;
   `
 
 export const Slide = styled.View`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 280px;
+  height: 265px;
   position: relative;
 `
 
