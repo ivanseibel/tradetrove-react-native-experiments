@@ -7,22 +7,47 @@ type PriceProps = {
   size: 'md' | 'lg'
 }
 
-export const Main = styled(SafeAreaView).attrs({
-  edges: ['top'],
-})`
+export const Main = styled.View`
   flex: 1;
   width: 100%;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.gray6};
 `
 
-export const NavigationHeader = styled.View`
+export const NavigationHeader = styled(SafeAreaView).attrs({
+  edges: ['top'],
+})`
   width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20px;
   padding: 0 24px 10px;
+`
+
+export const PreviewHeader = styled(SafeAreaView).attrs({
+  edges: ['top'],
+})`
+  width: 100%;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 24px 24px;
+  background-color: ${({ theme }) => theme.colors.bluelight};
+`
+
+export const PreviewHeaderTitle = styled.Text`
+  color: ${({ theme }) => theme.colors.gray7};
+  text-align: center;
+  font-family: ${({ theme }) => theme.fontFamily.bold};
+  font-size: ${({ theme }) => theme.fontSize.md}px;
+  line-height: 20.8px;
+`
+
+export const PreviewHeaderSubtitle = styled.Text`
+  color: ${({ theme }) => theme.colors.gray7};
+  text-align: center;
+  font-family: ${({ theme }) => theme.fontFamily.regular};
+  font-size: ${({ theme }) => theme.fontSize.sm}px;
+  line-height: 18.2px;
 `
 
 export const NavigationButton = styled(TouchableOpacity).attrs({
