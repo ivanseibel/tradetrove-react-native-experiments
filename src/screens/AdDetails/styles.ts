@@ -54,13 +54,14 @@ export const EditIcon = styled(PencilSimpleLine).attrs(({ theme }) => ({
 export const Content = styled.ScrollView.attrs({
   contentContainerStyle: {
     flexGrow: 1,
-    paddingBottom: 90,
+    // paddingBottom: 16,
     paddingTop: 20,
-    paddingHorizontal: 24,
+    // paddingHorizontal: 24,
     alignItems: 'center',
-    gap: 24,
+    // gap: 24,
   },
   showsVerticalScrollIndicator: false,
+  bounces: false,
 })`
 
 `
@@ -70,6 +71,7 @@ export const SellerInfo = styled.View`
   align-items: center;
   gap: 8px;
   align-self: stretch;
+  padding: 0 24px;
 `
 
 export const SellerAvatar = styled.Image`
@@ -91,6 +93,7 @@ export const ProductDetails = styled.View`
   align-items: flex-start;
   gap: 8px;
   align-self: stretch;
+  padding: 0 24px;
 `
 
 export const BadgeWrapper = styled.View`
@@ -171,7 +174,7 @@ export const ProductDescription = styled(Text).attrs({
 
 export const PaymentDetails = styled.View`
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   align-self: stretch;
 `
 
@@ -180,6 +183,7 @@ export const AcceptsTrades = styled.View`
   align-items: center;
   gap: 8px;
   align-self: stretch;
+  padding: 0 24px;
 `
 
 export const AcceptsTradesTitle = styled.Text`
@@ -201,6 +205,7 @@ export const PaymentMethods = styled.View`
   align-items: flex-start;
   gap: 8px;
   align-self: stretch;
+  padding: 0 24px;
 `
 
 export const PaymentMethodsTitle = styled.Text`
@@ -254,5 +259,5 @@ export const MyAdFooter = styled(SafeAreaView).attrs({
 })`
   gap: 8px;
   align-self: stretch;
-  padding: 10px 24px 16px;
+  padding: ${Platform.OS === 'ios' ? '0 24px 0' : '0 24px 8px'};
 `
