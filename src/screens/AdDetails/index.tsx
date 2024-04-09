@@ -14,6 +14,8 @@ import {
 } from 'phosphor-react-native'
 import { Button } from '@components/Button'
 import { AdDetailsParams } from '@routes/app.route'
+import { VerticalDivider } from '../../components/SearchInput/styles'
+import { VerticalSpace } from '@components/VerticalSpace'
 
 type PaymentItem = {
   Icon: Icon
@@ -53,14 +55,22 @@ const renderMyAdFooter = ({ active }: { active: boolean }) => {
   const { colors } = useTheme()
 
   return (
-    <SC.MyAdFooter>
-      <Button
-        label={active ? 'Deactivate Ad' : 'Activate Ad'}
-        type={active ? 'black' : 'blue'}
-        Icon={Power}
-      />
-      <Button label={'Delete Ad'} type={'gray'} Icon={Trash} iconColor="dark" />
-    </SC.MyAdFooter>
+    <>
+      <VerticalSpace style={{ flex: 1 }} height={0} />
+      <SC.MyAdFooter>
+        <Button
+          label={active ? 'Deactivate Ad' : 'Activate Ad'}
+          type={active ? 'black' : 'blue'}
+          Icon={Power}
+        />
+        <Button
+          label={'Delete Ad'}
+          type={'gray'}
+          Icon={Trash}
+          iconColor="dark"
+        />
+      </SC.MyAdFooter>
+    </>
   )
 }
 
@@ -97,6 +107,8 @@ export const AdDetails = () => {
           <SC.SellerName>John Doe</SC.SellerName>
         </SC.SellerInfo>
 
+        <VerticalSpace height={18} />
+
         <SC.ProductDetails>
           <SC.BadgeWrapper>
             <SC.BadgeText>New</SC.BadgeText>
@@ -116,6 +128,9 @@ export const AdDetails = () => {
             Nam vestibulum, nunc eget accumsan.
           </SC.ProductDescription>
         </SC.ProductDetails>
+
+        <VerticalSpace height={18} />
+
         <SC.PaymentDetails>
           <SC.AcceptsTrades>
             <SC.AcceptsTradesTitle>
@@ -136,10 +151,10 @@ export const AdDetails = () => {
             </SC.PaymentMethodsList>
           </SC.PaymentMethods>
         </SC.PaymentDetails>
-      </SC.Content>
 
+        {allowEdit && renderMyAdFooter({ active })}
+      </SC.Content>
       {!allowEdit && renderAdFooter()}
-      {allowEdit && renderMyAdFooter({ active })}
     </SC.Main>
   )
 }
