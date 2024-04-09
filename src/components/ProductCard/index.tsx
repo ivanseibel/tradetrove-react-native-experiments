@@ -35,7 +35,7 @@ export const ProductCard = ({
   const handleProductPress = () => {
     navigation.navigate('adDetails', {
       id,
-      allowEdit: userId === seller.id,
+      detailsType: userId === seller.id ? 'myAd' : 'ad',
     })
   }
 
