@@ -18,6 +18,7 @@ import { useState } from 'react'
 import { VerticalSpace } from '@components/VerticalSpace'
 import { CheckboxGroup } from '@components/CheckboxGroup'
 import { Button } from '@components/Button'
+import { AppNavigatorRoutesProps } from '@routes/app.route'
 
 const fakeProps = {
   operation: 'create',
@@ -25,7 +26,7 @@ const fakeProps = {
 
 export const AdForm = () => {
   const [checked, setChecked] = useState(false)
-  const navigation = useNavigation()
+  const navigation = useNavigation<AppNavigatorRoutesProps>()
 
   const onCheckedChange = (
     isChecked: boolean | ((prevState: boolean) => boolean)
@@ -35,6 +36,13 @@ export const AdForm = () => {
 
   const handleBack = () => {
     navigation.goBack()
+  }
+
+  const handleNext = () => {
+    navigation.navigate('adDetails', {
+      id: '123',
+      detailsType: 'preview',
+    })
   }
 
   return (
@@ -156,7 +164,7 @@ export const AdForm = () => {
               />
               <Button
                 label="Next"
-                onPress={() => console.log('Next')}
+                onPress={handleNext}
                 type="black"
                 style={{
                   width: '48%',
