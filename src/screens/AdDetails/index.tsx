@@ -11,11 +11,14 @@ import {
   WhatsappLogo,
   Power,
   Trash,
+  ArrowLeft,
+  Tag,
 } from 'phosphor-react-native'
 import { Button } from '@components/Button'
 import { AdDetailsParams } from '@routes/app.route'
 import { VerticalDivider } from '../../components/SearchInput/styles'
 import { VerticalSpace } from '@components/VerticalSpace'
+import { View } from 'react-native'
 
 type PaymentItem = {
   Icon: Icon
@@ -51,6 +54,33 @@ const renderAdFooter = () => {
   )
 }
 
+const renderAdPreviewFooter = () => {
+  return (
+    <>
+      <VerticalSpace style={{ flex: 1 }} height={0} />
+      <SC.Footer>
+        <Button
+          label="Back and edit"
+          type="gray"
+          Icon={ArrowLeft}
+          iconColor="dark"
+          iconWeight="regular"
+          style={{ width: '48%' }}
+        />
+
+        <Button
+          label="Publish"
+          type="blue"
+          Icon={Tag}
+          iconColor="light"
+          iconWeight="regular"
+          style={{ width: '48%' }}
+        />
+      </SC.Footer>
+    </>
+  )
+}
+
 const renderMyAdFooter = ({ active }: { active: boolean }) => {
   const { colors } = useTheme()
 
@@ -78,7 +108,7 @@ export const AdDetails = () => {
   const navigation = useNavigation()
   const route = useRoute()
 
-  const { id, allowEdit } = route.params as AdDetailsParams
+  const { id, detailsType } = route.params as AdDetailsParams
   const active = true
 
   const handleBackPress = () => {
@@ -87,17 +117,27 @@ export const AdDetails = () => {
 
   return (
     <SC.Main>
-      <SC.NavigationHeader>
-        <SC.NavigationButton onPress={handleBackPress}>
-          <SC.BackIcon />
-        </SC.NavigationButton>
+      {detailsType !== 'preview' ? (
+        <SC.NavigationHeader>
+          <SC.NavigationButton onPress={handleBackPress}>
+            <SC.BackIcon />
+          </SC.NavigationButton>
 
-        {allowEdit && (
-          <SC.EditButton>
-            <SC.EditIcon />
-          </SC.EditButton>
-        )}
-      </SC.NavigationHeader>
+          {detailsType === 'myAd' && (
+            <SC.EditButton>
+              <SC.EditIcon />
+            </SC.EditButton>
+          )}
+        </SC.NavigationHeader>
+      ) : (
+        <SC.PreviewHeader>
+          <SC.PreviewHeaderTitle>Ad preview</SC.PreviewHeaderTitle>
+          <SC.PreviewHeaderSubtitle>
+            This is how your ad will look like
+          </SC.PreviewHeaderSubtitle>
+        </SC.PreviewHeader>
+      )}
+
       <ImgCarousel />
       <SC.Content>
         <SC.SellerInfo>
@@ -152,9 +192,10 @@ export const AdDetails = () => {
           </SC.PaymentMethods>
         </SC.PaymentDetails>
 
-        {allowEdit && renderMyAdFooter({ active })}
+        {detailsType === 'myAd' && renderMyAdFooter({ active })}
+        {detailsType === 'preview' && renderAdPreviewFooter()}
       </SC.Content>
-      {!allowEdit && renderAdFooter()}
+      {detailsType === 'ad' && renderAdFooter()}
     </SC.Main>
   )
 }
