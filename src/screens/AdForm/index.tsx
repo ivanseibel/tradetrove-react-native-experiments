@@ -155,8 +155,8 @@ export const AdForm = () => {
                 }}
               />
               <Button
-                label="Publish"
-                onPress={() => console.log('Publish')}
+                label="Next"
+                onPress={() => console.log('Next')}
                 type="black"
                 style={{
                   width: '48%',
